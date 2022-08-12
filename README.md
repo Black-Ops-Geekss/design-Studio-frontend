@@ -2,12 +2,12 @@
 
 ## Project Team
 
-1. Zaid Alshibi (TL)
-2. Mohammad AL Momani
-3. Yaser Odat
-4. Salah Alhamawi
-5. Hamzah Aldaamas
-6. Amani Alsmadi
+1. Zaid Alshibi (TL).
+2. Mohammad AL Momani.
+3. Yaser Odat.
+4. Salah Alhamawi.
+5. Hamzah Aldaamas.
+6. Amani Alsmadi.
 
 
 ## Website Description
