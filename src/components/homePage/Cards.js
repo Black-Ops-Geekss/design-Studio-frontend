@@ -5,69 +5,69 @@ import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 
- class Cards extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-         categorize:'',
-         mapImages:Images,
-        }
+class Cards extends Component {
+  constructor ( props ) {
+    super( props );
+    this.state = {
+      categorize: '',
+      mapImages: Images,
+    };
+  }
+
+// filter images by category
+  handlerSubmit = ( e ) => {
+    e.preventDefault();
+    this.setState( {
+      categorize: e.target.value,
+    } );
+    this.handlerFilter( e.target.value );
+    console.log( e.target.value );
+
+  };
+  handlerFilter = ( categorize ) => {
+    if ( categorize === 'All' ) {
+      let images = Images;
+
+      this.setState( {
+        mapImages: images,
+      } );
     }
+    else {
+      let images = Images.filter( ( img ) => {
+        return img.category === categorize;
+      } );
 
-
-    handlerSubmit=(e)=>{
-      e.preventDefault();
-       this.setState({
-        categorize:e.target.value,
-       });
-      this.handlerFilter(e.target.value);
-      console.log(e.target.value)
-
+      this.setState( {
+        mapImages: images
+      } );
+      console.log( images );
     }
-    handlerFilter=(categorize)=>{
-      if(categorize==='All'){
-      let images=Images;
-      
-      this.setState({
-        mapImages:images,
-      })
-      }
-      else{
-        let images=Images.filter((img)=>{
-            return img.category===categorize;
-        })
-    
-        this.setState({
-            mapImages:images
-        })
-        console.log(images);
-      }
-    }
+  };
 
-  render() {
+  render () {
 
 
     return (
-        <>
+      <>
         <Container className='form'>
-      <Form.Group className="mb-3">
-        <Form.Label> select Categorize</Form.Label>
-        <Form.Select onChange={this.handlerSubmit}>
-          <option>All</option>
-          <option>galaxy</option>
-          <option>cool</option>
-          <option>fashion</option>
-          <option>paint</option>
-        </Form.Select>
-      </Form.Group>
-      </Container>
-      <Container className='images'>
-        {this.state.mapImages.map(img=>{
-            return <img key={img._id} src={img.url} alt="img"/>
-        })}
-      </Container>
+          <Form.Group className="mb-3">
+            <Form.Label> Select Category</Form.Label>
+            <Form.Select onChange={this.handlerSubmit}>
+              <option>All</option>
+              <option>galaxy</option>
+              <option>cool</option>
+              <option>fashion</option>
+              <option>paint</option>
+            </Form.Select>
+          </Form.Group>
+        </Container>
+        <Container className='images'>
+          {this.state.mapImages.map( img => {
+            return <img key={img._id} src={img.url} alt="img" />;
+          } )}
+        </Container>
       </>
-    )
+    );
   }
 }
 
