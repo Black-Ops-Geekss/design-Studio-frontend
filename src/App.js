@@ -4,53 +4,86 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ChosenCards from "./components/Cart/ChosenCards";
+import MainPage from "./components/homePage/MainPage";
+import LogIn from "./components/admin/LogIn";
+import ManageDesigns from "./components/admin/ManageDesigns";
+import ManageEmployees from "./components/admin/ManageEmployees";
+import Profile from "./components/admin/Profile";
+import AboutUs from "./components/AboutUs";
 
 
+export default class RouteIf extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      Auth: false // true if admin is logged in
+    };
+  }
 
-export default function RouteIf (){
+  getAdmin = (islogged) => {
+      this.setState({Auth: islogged});
+        console.log('in App.js', this.state.Auth);
+    }
+    render(){
 
-    return (
-        <Router>
-          <Header />
-          <Routes>
-
-            {/* Main Page routes */}
-
-            <Route exact path="/" element='Home Page Folder'></Route>            
-                  
-            <Route exact path="/OrderNow" element='Cart Folder'></Route>  
-
-            <Route exact path="/AboutUs" element='AboutUs Page'></Route>
-              
-            <Route exact path="/CreateDesign/:url"element=''></Route>
-
-            {/* Main Page routes */}
-
-
-
-
-            {/* Admin Page routes */}
-
-            <Route path='/Admin/ManageDesigns/:id' element=''></Route>
-
-            <Route exact path="/Admin/ManageEmployees/:id" element=''></Route>
-
-            <Route exact path="/Admin/Profile" element=''></Route>
-
-            <Route exact path="/Admin" element=''></Route>
-
-
-            {/* Admin Page routes */}
-
-
-
+      return (
+          <Router>
+            <Header Admin={this.state.Auth} />
+            <Routes>
+  
+              {/* Main Page routes */}
+  
+              <Route exact path="/" element={<MainPage  />}></Route>            
+                    
+              <Route exact path="/OrderNow" element={<ChosenCards />}></Route>  
+  
+              <Route exact path="/AboutUs" element={<AboutUs />}></Route>
                 
-          </Routes>
-          <Footer />
-        </Router>
-    )
+              <Route exact path="/CreateDesign/:url"element=''></Route>
+  
+              {/* Main Page routes */}
+     
+  
+              <Route exact path="/Admin" element={<LogIn onSubmit={this.getAdmin} />}></Route>
+
+  
+              {/* Admin Page routes */}
+  
+              {this.state.Auth&&(
+  
+                <>
+                {/* added the main rout for the manage designs, and kept the /:id for later to work on */}
+                <Route path='/Admin/ManageDesigns' element={<ManageDesigns />}></Route>
+    
+                <Route path='/Admin/ManageDesigns/:id' element=''></Route>
+    
+                {/* added the main rout for the manage employees, and kept the /:id for later to work on */}
+                <Route exact path="/Admin/ManageEmployees" element={<ManageEmployees />}></Route>
+    
+                <Route exact path="/Admin/ManageEmployees/:id" element=''></Route>
+    
+                <Route exact path="/Admin/Profile" element={<Profile />}></Route>
+                
+                </>  
+  
+              )
+              }
+  
+  
+              {/* Admin Page routes */}
+  
+  
+  
+                  
+            </Routes>
+            <Footer />
+          </Router>
+      )
+
+    }
 }
