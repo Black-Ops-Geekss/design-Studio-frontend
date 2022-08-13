@@ -9,12 +9,30 @@ export default class LogIn extends Component {
             Auth: false // true if admin is logged in
         };
     }
+
+    handleSubmit = (e) => {
+
+        e.preventDefault();
+        console.log(this.state);
+        if (this.state.username === 'Admin' && this.state.password === 'Admin') {
+            this.setState({ Auth: true });
+            console.log('in login', this.state.Auth);
+            this.props.onSubmit(true);
+        }
+    }
     
     render() {
 
         return (
             <div>
                 <div>
+
+                    <form onSubmit={this.handleSubmit}>
+
+                        <button type="submit" className="btn btn-primary" >Submit</button>
+                    </form>
+
+
                     update the state of the Auth variable to true if the username and password match
                 </div>
 
