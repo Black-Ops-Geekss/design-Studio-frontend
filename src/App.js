@@ -35,7 +35,7 @@ export default class RouteIf extends Component{
           <Router>
             <Header Admin={this.state.Auth} />
             <Routes>
-  
+
               {/* Main Page routes */}
   
               <Route exact path="/" element={<MainPage  />}></Route>            
