@@ -1,18 +1,74 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Images from './Images.json';
+import '../../Styling/Cards.css';
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
 
-export default class Cards extends Component {
-  render() {
-    return (
+ class Cards extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+         categorize:'',
+         mapImages:Images,
+        }
+    }
+
+
+    handlerSumbit=(e)=>{
+      e.preventDefault();
+       this.setState({
+        categorize:e.target.value,
+       });
+      this.handlerFilter(e.target.value);
+      console.log(e.target.value)
+
+    }
+    handlerFilter=(categorize)=>{
+      if(categorize==='All'){
+      let images=Images;
       
-        <div>
-      <div>Drop down menu to select categories</div>
+      this.setState({
+        mapImages:images,
+      })
+      }
+      else{
+        let images=Images.filter((img)=>{
+            return img.category===categorize;
+        })
+    
+        this.setState({
+            mapImages:images
+        })
+        console.log(images);
+      }
+    }
 
-      <div>filter your cards here based on selected categories, default render all (cards from bootstrap)</div>
+  render() {
 
-      <div>create you own design (take the user into a new route, give the user option to enter a url 
-        for an image, send the image for the backend remove background and render it on a card)</div>
-      </div>
 
+    return (
+        <>
+        <Container className='form'>
+      <Form.Group className="mb-3">
+        <Form.Label> select Categorize</Form.Label>
+        <Form.Select onChange={this.handlerSumbit}>
+          <option>All</option>
+          <option>galaxy</option>
+          <option>cool</option>
+          <option>fashion</option>
+          <option>paint</option>
+        </Form.Select>
+      </Form.Group>
+      </Container>
+      <Container className='images'>
+        {this.state.mapImages.map(img=>{
+            return <img key={img._id} src={img.url} alt="img"/>
+        })}
+      </Container>
+      </>
     )
   }
-};
+}
+
+export default Cards;
