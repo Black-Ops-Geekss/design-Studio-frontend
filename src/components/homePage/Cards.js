@@ -15,7 +15,7 @@ import Form from 'react-bootstrap/Form';
     }
 
 
-    handlerSumbit=(e)=>{
+    handlerSubmit=(e)=>{
       e.preventDefault();
        this.setState({
         categorize:e.target.value,
@@ -52,7 +52,7 @@ import Form from 'react-bootstrap/Form';
         <Container className='form'>
       <Form.Group className="mb-3">
         <Form.Label> select Categorize</Form.Label>
-        <Form.Select onChange={this.handlerSumbit}>
+        <Form.Select onChange={this.handlerSubmit}>
           <option>All</option>
           <option>galaxy</option>
           <option>cool</option>
