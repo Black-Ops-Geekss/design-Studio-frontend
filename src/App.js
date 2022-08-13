@@ -15,6 +15,7 @@ import ManageDesigns from "./components/admin/ManageDesigns";
 import ManageEmployees from "./components/admin/ManageEmployees";
 import Profile from "./components/admin/Profile";
 import AboutUs from "./components/AboutUs";
+import CreateOwnDesign from "./components/CreateOwnDesign/CreateOwnDesign";
 
 
 export default class RouteIf extends Component{
@@ -44,10 +45,10 @@ export default class RouteIf extends Component{
   
               <Route exact path="/AboutUs" element={<AboutUs />}></Route>
                 
-              <Route exact path="/CreateDesign/:url"element=''></Route>
+
+              <Route exact path="/CreateDesign"element={<CreateOwnDesign />}></Route>
   
               {/* Main Page routes */}
-     
   
               <Route exact path="/Admin" element={<LogIn onSubmit={this.getAdmin} />}></Route>
 
