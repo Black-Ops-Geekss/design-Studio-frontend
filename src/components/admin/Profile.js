@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 // "Hi admin" with a drop down menu, contains the options of: view admin info and sign out option (when the sign out pressed, redirect to the user home page)
 class Profile extends Component {
     render() {
@@ -57,3 +58,5 @@ class Profile extends Component {
         )
     }
 };
+
+export default Profile;
