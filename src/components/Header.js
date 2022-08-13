@@ -22,6 +22,7 @@ export default class Header extends Component {
   
        {this.props.Admin&&(
           <>
+          <NavItem><Link to="/" className="nav-link" style={{margin: '0px 15px'}} >View as Guest</Link></NavItem>
           <NavItem><Link to="/Admin/ManageDesigns" className="nav-link"  style={{margin: '0px 15px'}}>Manage Designs </Link></NavItem>
           <NavItem><Link to="/Admin/ManageEmployees" className="nav-link"  style={{margin: '0px 15px'}}>Manage Employees </Link></NavItem>
           <NavItem><Link to="/Admin/Profile" className="nav-link"  style={{margin: '0px 15px'}}>Hi, Admin </Link></NavItem>

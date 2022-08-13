@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styling/Login.css';
-class login extends Component {
+import ManageDesigns from './ManageDesigns';
+
+export default class login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,6 +23,8 @@ class login extends Component {
                 Auth: true,
                 Error: false
             });
+            console.log(this.state.Auth);
+            this.props.onSubmit(true);
         }
         else {
             this.setState({
@@ -39,18 +43,17 @@ class login extends Component {
     render() {
         return (
             <>
-                {this.state.Auth ? <h1>'Your user name and password is Correct'</h1> : <div className='login'>
+                {this.state.Auth ? <ManageDesigns /> : <div className='login'>
                     <div className='form-box'>
-
                         <form className='form' onSubmit={this.handlerSubmit}>
                             <input type='text' className='input' placeholder='User ID' required name='user' />
-                            <input type='password' className='input' placeholder='Emter password' required name='pass' />
+                            <input type='password' className='input' placeholder='Enter password' required name='pass' />
                             {this.state.Error && <Alert key='danger' variant='danger'>
                                 Your password and user is not Correct
                             </Alert>}
-                            <a href='#' onClick={this.handlerForget}>Forget Passowd</a>
+                            <a href='#' onClick={this.handlerForget}>Forget Password</a>
                             {this.state.Forget && <Alert key='light' variant='light'>
-                                This is a  alert—check it out        </Alert>}
+                                This is a  alert—check it out      </Alert>}
                             <button type='submit' className='submit'>Login</button>
                         </form>
                     </div>
@@ -61,4 +64,3 @@ class login extends Component {
     }
 }
 
-export default login
