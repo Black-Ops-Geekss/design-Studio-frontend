@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ChosenCards from "./components/Cart/ChosenCards";
 import MainPage from "./components/homePage/MainPage";
 import LogIn from "./components/admin/LogIn";
 import ManageDesigns from "./components/admin/ManageDesigns";
@@ -16,6 +15,8 @@ import ManageEmployees from "./components/admin/ManageEmployees";
 import Profile from "./components/admin/Profile";
 import AboutUs from "./components/AboutUs";
 import CreateOwnDesign from "./components/CreateOwnDesign/CreateOwnDesign";
+import Cart from "./components/Cart/Cart";
+import ClickedCard from "./components/homePage/ClickedCard";
 
 
 export default class RouteIf extends Component{
@@ -39,9 +40,11 @@ export default class RouteIf extends Component{
 
               {/* Main Page routes */}
   
-              <Route exact path="/" element={<MainPage  />}></Route>            
-                    
-              <Route exact path="/OrderNow" element={<ChosenCards />}></Route>  
+              <Route exact path="/" element={<MainPage  />}></Route>     
+
+              <Route exact path="/CLickedCard/:id" element={<ClickedCard  />}></Route>            
+
+              <Route exact path="/OrderNow" element={<Cart />}></Route>  
   
               <Route exact path="/AboutUs" element={<AboutUs />}></Route>
                 

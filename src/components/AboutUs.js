@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import './AboutUs.css' // imports styles of the cards 
+import '../Styling/AboutUs.css' // imports styles of the cards 
 // import {SocialMediaIconsReact} from 'social-media-icons-react'; // npm i social-media-icons-react to install the kit (I got the icons from this kit)
 import MemberData from './AboutUs.json'
 
@@ -23,7 +23,7 @@ export default function AboutUs() {
         <div className='prof-container' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}> {/* if you hover over this div, it expands the card. */ }
         <div className='box'>
           {console.log(member.image)}
-          <img className='img-box' src={Hamazah} alt="profile-img" />
+          <img className='img-box' src={member.image} alt="profile-img" />
           <h2 className='name' >{member.name}</h2> 
           <h3 className='des'>{subTitle}</h3>
           

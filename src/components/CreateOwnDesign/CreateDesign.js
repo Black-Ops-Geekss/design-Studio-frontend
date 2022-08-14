@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Styling/createDesign.css';
+import '../../Styling/createDesign.css';
 
 export default class CreateDesign extends Component {
   constructor(props) {
