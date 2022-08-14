@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
-import Images from './Images.json';
 import '../../Styling/Cards.css';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Cards extends Component {
   constructor ( props ) {
     super( props );
     this.state = {
       categorize: '',
-      mapImages: Images,
+      mapImages: [],
+      designsArray: [],
+      categories: ["galaxy", "cool", "fashion", "paint"],
     };
+  }
+
+  renderingImages = async () => {
+    const res = await axios.get(`http://localhost:3001/getCategories`);
+    this.setState({ designsArray: res.data,
+      mapImages: res.data });
+    console.log(res.data);
+  }
+
+  componentDidMount () {
+    this.renderingImages();
   }
 
 // filter images by category
@@ -26,14 +40,14 @@ class Cards extends Component {
   };
   handlerFilter = ( categorize ) => {
     if ( categorize === 'All' ) {
-      let images = Images;
+      let images = this.state.designsArray;
 
       this.setState( {
         mapImages: images,
       } );
     }
     else {
-      let images = Images.filter( ( img ) => {
+      let images = this.state.designsArray.filter( ( img ) => {
         return img.category === categorize;
       } );
 
@@ -45,7 +59,6 @@ class Cards extends Component {
   };
 
   render () {
-
 
     return (
       <>
@@ -62,8 +75,10 @@ class Cards extends Component {
           </Form.Group>
         </Container>
         <Container className='images'>
+        
           {this.state.mapImages.map( img => {
-            return <img key={img._id} src={img.url} alt="img" />;
+            return <Link to={`./ClickedCard/${img._id}`}><img key={img._id} src={img.url} alt="img" /></Link>
+             
           } )}
         </Container>
       </>

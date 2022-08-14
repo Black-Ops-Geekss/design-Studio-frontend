@@ -1,14 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser"; // to receive the message and auto-reply
 import swal from 'sweetalert'; //  npm install sweetalert --save
-import '../Styling/Form.css'
+// import {addedItem} from './../../../src/components/homePage/ClickedCard';
+import '../../Styling/Form.css'
+import axios from "axios";
 
 
 // npm i @emailjs/browser 
 var cond = false; // in order to render a div based on collection method. If cond is not satisfied then don't render anything, else render our site address
 
-const Form = () => {
+export default function Form () {
     const [collectMethod, setCollectMethod] = useState('test')
+    const [userArray, setUserArray] = useState([])
 
     const handleSelect = (e) => {
         console.log(e.target.value)
@@ -18,34 +21,85 @@ const Form = () => {
     }
     const form = useRef();
 
-    const sendEmail = (e) => {
+    
+    
+    
+    useEffect(() => {
+        setUserArray(JSON.parse(localStorage.getItem('addedItemKey')))
+
+    });
+    
+    
+    const sendEmail = async(e) => {
         e.preventDefault();
+        let a = JSON.parse(localStorage.getItem('addedItemKey'))
+        
+        let order ={
+            "name": e.target.name.value,
+            "email": e.target.email.value,
+            "phone": e.target.phone.value
+        }
+        console.log(order);
 
-        emailjs.sendForm('service_wnvjbmc', 'template_6t03lfw', form.current, 'ug0blzHMhGz4I5o6P') // you can get keys when you create an account on EmailJS
-            .then((result) => {
-                console.log(result.text);  // if the order was sent successfully this code is executed
-                var cond = true;
-                console.log(cond)
-            }, (error) => {
-                console.log(error.text); // if the order was NOT sent successfully this code is executed
-            });
+        const newOrder = {
+            "auth0Name": "Hamzah.2000",
+            "name": order.name,
+            "email": order.email,
+            "phone": order.phone,
+            "items": a,
+        }
 
+        await axios.post('http://localhost:3001/userRequest', {newOrder}).then(()=>{
+                    // emailjs.sendForm('service_wnvjbmc', 'template_6t03lfw', form.current, 'ug0blzHMhGz4I5o6P') // you can get keys when you create an account on EmailJS
+                    //     .then((result) => {
+                    //         console.log(result.text);  // if the order was sent successfully this code is executed
+                    //         var cond = true;
+                    //         console.log(cond)
+                    //     }, (error) => {
+                    //         console.log(error.text); // if the order was NOT sent successfully this code is executed
+                    //     });
+            
+                    localStorage.removeItem('addedItemKey')
+                        swal("Order Sent!", "It will be ready within 2 hours!", "success");
+            
+                    e.target.reset()
+                    // window.location.reload(false);
+        }
+        ).catch(err => {
+            console.log(err);
+        }
+        )
 
-            swal("Order Sent!", "It will be ready within 2 hours!", "success");
-
-        e.target.reset()
 
     };
 
     return (
+        <div>
+            <div>
+            {userArray&&(
+                <>
+                {userArray.map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <img src={item} alt="aaaa" />
+                        </div>
+                    )
+                }
+                )}
+                </>
+            )
+
+
+            }
+            </div>
         <div className="form-and-map">
             <form ref={form} onSubmit={sendEmail} className='order-form'>
                 <label>Name</label>
-                <input type="text" name="user_name" />
+                <input id="name" type="text" name="user_name" />
                 <label>Email</label>
-                <input type="email" name="user_email" />
+                <input id="email" type="text" name="user_email" />
                 <label>Phone Number</label>
-                <input type="text" name="user_number" />
+                <input id="phone" type="text" name="user_number" />
                 <br></br>
                 <label>Collecting Method</label>
                 <select name='delivery' value={collectMethod} onChange={handleSelect}>
@@ -71,26 +125,13 @@ const Form = () => {
 
             </form>
 
-
-            {/*   https://google-map-generator.com/ */}
-            {/* <div class="mapouter">
-                <div class="gmap_canvas">
-                    <iframe width="501" height="600" id="gmap_canvas" src="https://maps.google.com/maps?q=LTUC&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                    </iframe>
-
-
-                </div>
-
-                <button onClick={testAlert}> Test </button>
-
-            </div> */}
-
+        </div>
         </div>
 
     );
 };
 
-export default Form;
+
 
 
 
