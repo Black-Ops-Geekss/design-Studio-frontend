@@ -1,9 +1,47 @@
-import React from "react";
-import Card from "../../components/Card";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-export default function ManageDesigns() {
+import axios from "axios";
+import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+// import { Link } from "react-router-dom";
+
+
+export default class ManageDesigns extends Component {
+  constructor ( props ) {
+    super( props );
+    this.state = {
+      categorize: '',
+      mapImages: [],
+      designsArray: [],
+      categories: ["galaxy", "cool", "fashion", "paint"],
+    };
+  }
+
+
+  renderingImages = async () => {
+    const res = await axios.get(`http://localhost:3001/getCategories`);
+    this.setState({ designsArray: res.data,
+      mapImages: res.data });
+    console.log(res.data);
+  }
+
+  componentDidMount () {
+    this.renderingImages();
+  }
+
+  deleteDesign = async (id) => {
+   let a = prompt("Type `DELETE` to confirm");
+
+    console.log(a)
+    if (a === "DELETE") {
+      await axios.delete(`http://localhost:3001/deleteDesign/${id}`);
+      this.renderingImages();
+    }
+  }
+
+
+  render(){
+
+  
+
   return (
     <div> 
       <div className="row">
@@ -18,41 +56,37 @@ export default function ManageDesigns() {
                   <thead className=" text-primary">
                     <tr>
                       <th>
-                        Name
+                        Design
                       </th>
-                      <th>
-                        Price
-                      </th>
-                      <th>
-                        Description
-                      </th>
-                      <th>
-                        Image
-                      </th>
+                      
                       <th>
                         Actions
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.props.designs.map(design => (
-                      <tr key={design.id}>
-                        <td>{design.name}</td>
+                    {this.state.designsArray.map(design => (
+                      <tr >
+                        {/* <td>{design.name}</td>
                         <td>{design.price}</td>
-                        <td>{design.description}</td>
+                        <td>{design.description}</td> */}
                         <td>
-                          <img src={design.image} alt={design.name} />
+                          <img src={design.url} alt={design.title} style={{width:"250px"}} />
                         </td>
                         <td>
-                          <Link to={`/admin/designs/edit/${design.id}`}>
-                            <Button color="primary" size="sm">
-                              Edit
-                            </Button>
-                          </Link>
+                          
+                        {/* <Button
+                            color="danger"
+                            size="sm"
+                            onClick={() => this.deleteDesign(design._id)}
+                          >
+                            Edit
+                          </Button> */}
+
                           <Button
                             color="danger"
                             size="sm"
-                            onClick={() => this.props.deleteDesign(design.id)}
+                            onClick={() => this.deleteDesign(design._id)}
                           >
                             Delete
                           </Button>
@@ -66,21 +100,9 @@ export default function ManageDesigns() {
           </div>
         </div>
 
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Delete Design</ModalHeader>
-          <ModalBody>
-            Are you sure you want to delete this design?
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>
-              Cancel
-            </Button>{" "}
-            <Button color="danger" onClick={this.toggle}>
-              Delete
-            </Button>
-          </ModalFooter>
-        </Modal>
+        
       </div>
     </div>
   );
+}
 }

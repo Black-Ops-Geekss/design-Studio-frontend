@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MainPage from "./components/homePage/MainPage";
 import LogIn from "./components/admin/LogIn";
 import ManageDesigns from "./components/admin/ManageDesigns";
-import ManageEmployees from "./components/admin/ManageEmployees";
+// import ManageEmployees from "./components/admin/ManageEmployees";
 import Profile from "./components/admin/Profile";
 import AboutUs from "./components/AboutUs";
 import CreateOwnDesign from "./components/CreateOwnDesign/CreateOwnDesign";
@@ -67,7 +67,7 @@ export default class RouteIf extends Component{
                 <Route path='/Admin/ManageDesigns/:id' element=''></Route>
     
                 {/* added the main rout for the manage employees, and kept the /:id for later to work on */}
-                <Route exact path="/Admin/ManageEmployees" element={<ManageEmployees />}></Route>
+                {/* <Route exact path="/Admin/ManageEmployees" element={<ManageEmployees />}></Route> */}
     
                 <Route exact path="/Admin/ManageEmployees/:id" element=''></Route>
     
