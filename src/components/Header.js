@@ -28,7 +28,7 @@ export default class Header extends Component {
             <>
               <NavItem><Link to="/" className="nav-link" style={{ margin: '0px 15px' }} >View as Guest</Link></NavItem>
               <NavItem><Link to="/Admin/ManageDesigns" className="nav-link" style={{ margin: '0px 15px' }}>Manage Designs </Link></NavItem>
-              <NavItem><Link to="/Admin/ManageEmployees" className="nav-link" style={{ margin: '0px 15px' }}>Manage Employees </Link></NavItem>
+              <NavItem><Link to="/Admin/ManageOrders" className="nav-link" style={{ margin: '0px 15px' }}>Manage Orders </Link></NavItem>
 
               <NavDropdown title="Hi, Admin" id="basic-nav-dropdown">
               <NavDropdown.Item><Link to="/Admin/Profile" className="nav-link" style={{ margin: '0px 15px' }}>Profile</Link></NavDropdown.Item>
