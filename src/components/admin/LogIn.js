@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import { Component } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styling/Login.css';
 import ManageDesigns from './ManageDesigns';
 
 export default class login extends Component {
-    constructor(props) {
-        super(props);
+    constructor ( props ) {
+        super( props );
         this.state = {
             username: 'Admin',
             password: 'Admin',
@@ -16,31 +16,30 @@ export default class login extends Component {
         };
     }
 
-    handlerSubmit = (e) => {
+    handlerSubmit = ( e ) => {
         e.preventDefault();
-        if (e.target.user.value === 'Admin' && e.target.pass.value === 'Admin') {
-            this.setState({
+        if ( e.target.user.value === 'Admin' && e.target.pass.value === 'Admin' ) {
+            this.setState( {
                 Auth: true,
                 Error: false
-            });
-            console.log(this.state.Auth);
-            this.props.onSubmit(true);
+            } );
+            this.props.onSubmit( true );
         }
         else {
-            this.setState({
+            this.setState( {
                 Error: true,
                 Forget: false
-            })
+            } );
         }
 
-    }
+    };
     handlerForget = () => {
-        this.setState({
+        this.setState( {
             Forget: true,
             Error: false
-        });
-    }
-    render() {
+        } );
+    };
+    render () {
         return (
             <>
                 {this.state.Auth ? <ManageDesigns /> : <div className='login'>
@@ -53,14 +52,14 @@ export default class login extends Component {
                             </Alert>}
                             <a href='#' onClick={this.handlerForget}>Forget Password</a>
                             {this.state.Forget && <Alert key='light' variant='light'>
-                                This is a  alert—check it out      </Alert>}
+                                Please contact your Admin to have a new password</Alert>}
                             <button type='submit' className='submit'>Login</button>
                         </form>
                     </div>
                 </div>
                 }
             </>
-        )
+        );
     }
 }
 

@@ -8,13 +8,16 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ChosenCards from "./components/Cart/ChosenCards";
 import MainPage from "./components/homePage/MainPage";
 import LogIn from "./components/admin/LogIn";
 import ManageDesigns from "./components/admin/ManageDesigns";
-import ManageEmployees from "./components/admin/ManageEmployees";
+import ManageOrders from "./components/admin/ManageOrders";
 import Profile from "./components/admin/Profile";
 import AboutUs from "./components/AboutUs";
+import CreateOwnDesign from "./components/CreateOwnDesign/CreateOwnDesign";
+import Cart from "./components/Cart/Cart";
+import ClickedCard from "./components/homePage/ClickedCard";
+import UpdateDesign from "./components/admin/UpdateDesign";
 
 
 export default class RouteIf extends Component{
@@ -38,16 +41,18 @@ export default class RouteIf extends Component{
 
               {/* Main Page routes */}
   
-              <Route exact path="/" element={<MainPage  />}></Route>            
-                    
-              <Route exact path="/OrderNow" element={<ChosenCards />}></Route>  
+              <Route exact path="/" element={<MainPage  />}></Route>     
+
+              <Route exact path="/CLickedCard/:id" element={<ClickedCard  />}></Route>            
+
+              <Route exact path="/OrderNow" element={<Cart />}></Route>  
   
               <Route exact path="/AboutUs" element={<AboutUs />}></Route>
                 
-              <Route exact path="/CreateDesign/:url"element=''></Route>
+
+              <Route exact path="/CreateDesign"element={<CreateOwnDesign />}></Route>
   
               {/* Main Page routes */}
-     
   
               <Route exact path="/Admin" element={<LogIn onSubmit={this.getAdmin} />}></Route>
 
@@ -63,11 +68,13 @@ export default class RouteIf extends Component{
                 <Route path='/Admin/ManageDesigns/:id' element=''></Route>
     
                 {/* added the main rout for the manage employees, and kept the /:id for later to work on */}
-                <Route exact path="/Admin/ManageEmployees" element={<ManageEmployees />}></Route>
+                <Route exact path="/Admin/ManageOrders" element={<ManageOrders />}></Route>
     
                 <Route exact path="/Admin/ManageEmployees/:id" element=''></Route>
     
                 <Route exact path="/Admin/Profile" element={<Profile />}></Route>
+
+                <Route path='Admin/ManageDesigns/editDesign/:id' element={<UpdateDesign />}></Route>
                 
                 </>  
   

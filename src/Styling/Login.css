@@ -58,8 +58,8 @@ a{
     color: #ffad06;
 }
 .form{
-    top: 180px;
-    position: absolute;
+    top: 100px;
+    /* position: absolute; */
     width: 92%;
     transition: 0.5s;
     -webkit-transition: 0.5s;
