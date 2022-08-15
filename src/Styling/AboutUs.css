@@ -38,8 +38,8 @@
     background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
     border-radius: 5px;
     color:white;
-    height: 350px;
-    width: 350px;
+    height: 300px;
+    width: 300px;
     box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
 }
 
@@ -61,9 +61,15 @@
 
 .prof-container {
     display: inline-block;
-    margin: 10px;
-    width: fit-content;
-    padding-top: 80px;
+    position: relative;
+    margin: 20px;
+    left: 8%;
+    inline-size: 90vw;
+    margin-inline: auto;
+    max-inline-size: 30vw;
+    padding: 5vmin;
+
+    
     
 }
 .name{
@@ -73,7 +79,7 @@
     text-transform: uppercase;
 }
 .des {
-    margin-top: -24px;
+  
     font-size: 20px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.7);
@@ -83,4 +89,113 @@
 .hoverShow {
 
     color: black
+}
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+
+.main-container {
+	background-color: #28223F;
+	font-family: Montserrat, sans-serif;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: 0;
+}
+
+h3 {
+	margin: 10px 0;
+}
+
+h6 {
+	margin: 5px 0;
+	text-transform: uppercase;
+}
+
+p {
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.card-container {
+	background-color: #231E39;
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: #B3B8CD;
+	padding-top: 30px;
+	position: relative;
+	
+	text-align: center;
+}
+
+.card-container .pro {
+	color: #231E39;
+	background-color: #FEBB0B;
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 3px 7px;
+	position: absolute;
+	top: 30px;
+	left: 30px;
+}
+
+.card-container .round {
+	border: 1px solid #03BFCB;
+	border-radius: 50%;
+	padding: 7px;
+}
+
+
+
+.skills {
+	background-color: #1F1A36;
+	text-align: left;
+	padding: 15px;
+	margin-top: 30px;
+}
+
+.skills ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.skills ul li {
+	border: 1px solid #2D2747;
+	border-radius: 2px;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0 7px 7px 0;
+	padding: 7px;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p{
+    margin: 10px 0;
+}
+
+footer i{
+    color: red;
+}
+
+footer a{
+    color: #3c97bf;
+    text-decoration: none;
 }
