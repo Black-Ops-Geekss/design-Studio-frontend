@@ -13,29 +13,29 @@ class Cards extends Component {
       categorize: '',
       mapImages: [],
       designsArray: [],
-      categories: ["galaxy", "cool", "fashion", "paint"],
+      // categories: ["galaxy", "cool", "fashion", "paint"],
     };
   }
 
   renderingImages = async () => {
-    const res = await axios.get(`http://localhost:3001/getCategories`);
-    this.setState({ designsArray: res.data,
-      mapImages: res.data });
-    console.log(res.data);
-  }
+    const res = await axios.get( `${process.env.REACT_APP_SERVER}/getCategories` );
+    this.setState( {
+      designsArray: res.data,
+      mapImages: res.data
+    } );
+  };
 
   componentDidMount () {
     this.renderingImages();
   }
 
-// filter images by category
+  // filter images by category
   handlerSubmit = ( e ) => {
     e.preventDefault();
     this.setState( {
       categorize: e.target.value,
     } );
     this.handlerFilter( e.target.value );
-    console.log( e.target.value );
 
   };
   handlerFilter = ( categorize ) => {
@@ -54,7 +54,6 @@ class Cards extends Component {
       this.setState( {
         mapImages: images
       } );
-      console.log( images );
     }
   };
 
@@ -75,10 +74,9 @@ class Cards extends Component {
           </Form.Group>
         </Container>
         <Container className='images'>
-        
+
           {this.state.mapImages.map( img => {
-            return <Link to={`./ClickedCard/${img._id}`}><img key={img._id} src={img.url} alt="img" /></Link>
-             
+            return <Link to={`./ClickedCard/${img._id}`}><img key={img._id} src={img.url} alt="img" /></Link>;
           } )}
         </Container>
       </>
