@@ -51,7 +51,7 @@ export default class CreateDesign extends Component {
           <Form onSubmit={(e)=>{this.formInput(e)}} id="inputUrl">
             <Form.Group className="mb-3">
               <Form.Label>Image URL</Form.Label>
-              <Form.Control id="inputUrl" type="url" placeholder="Enter url ..." />
+              <Form.Control id="inputUrl" type="url" placeholder="Insert the URL of the image here .." />
               <Button className='button' variant="primary" type="submit">
                 Submit
               </Button>
