@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 
@@ -33,6 +34,16 @@ export default class ManageDesigns extends Component {
     console.log(a)
     if (a === "DELETE") {
       await axios.delete(`http://localhost:3001/deleteDesign/${id}`);
+      this.renderingImages();
+    }
+  }
+
+  editDesign = async (id) => {
+    let a = prompt("Type `EDIT` to confirm");
+
+    console.log(a)
+    if (a === "EDIT") {
+      await axios.put(`http://localhost:3001/editDesign/${id}`);
       this.renderingImages();
     }
   }
@@ -75,14 +86,11 @@ export default class ManageDesigns extends Component {
                         </td>
                         <td>
                           
-                        {/* <Button
-                            color="danger"
-                            size="sm"
-                            onClick={() => this.deleteDesign(design._id)}
+                        <Link to={`/Admin/ManageDesigns/editDesign/${design._id}`}><Button
                           >
                             Edit
-                          </Button> */}
-
+                          </Button>
+                          </Link>
                           <Button
                             color="danger"
                             size="sm"
@@ -98,9 +106,7 @@ export default class ManageDesigns extends Component {
               </div>
             </div>
           </div>
-        </div>
-
-        
+        </div>        
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import React from 'react';
 import { Component } from 'react';
 import { Navbar, NavItem } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import AuthButtons from './Auth/AuthButtons';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default class Header extends Component {
@@ -20,7 +19,6 @@ export default class Header extends Component {
             <NavItem><Link to="/OrderNow" className="nav-link" style={{ margin: '0px 15px' }}>Cart </Link></NavItem>
             <NavItem><Link to="/CreateDesign" className="nav-link" style={{ margin: '0px 15px' }}>Create Your Own Design</Link></NavItem>
             <NavItem><Link to="/AboutUs" className="nav-link" style={{ margin: '0px 15px' }}>AboutUs</Link></NavItem>
-            <NavItem><AuthButtons /></NavItem>
           </>
           )}
 
