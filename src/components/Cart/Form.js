@@ -4,6 +4,8 @@ import swal from 'sweetalert'; //  npm install sweetalert --save
 // import {addedItem} from './../../../src/components/homePage/ClickedCard';
 import '../../Styling/Form.css'
 import axios from "axios";
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // npm i @emailjs/browser 
@@ -73,24 +75,10 @@ export default function Form () {
     };
 
     return (
+        <Container>
+
         <div>
-            <div>
-            {userArray&&(
-                <>
-                {userArray.map((item, index) => {
-                    return (
-                        <div key={index}>
-                            <img src={item} alt="aaaa" />
-                        </div>
-                    )
-                }
-                )}
-                </>
-            )
-
-
-            }
-            </div>
+           
         <div className="form-and-map">
             <form ref={form} onSubmit={sendEmail} className='order-form'>
                 <label>Name</label>
@@ -125,7 +113,25 @@ export default function Form () {
             </form>
 
         </div>
+        <div>
+            {userArray&&(
+                <>
+                {userArray.map((item, index) => {
+                    return (
+                        <div key={index} className="divLocal">
+                            <img src={item} alt="aaaa" className="localImage" />
+                        </div>
+                    )
+                }
+                )}
+                </>
+            )
+
+
+            }
+            </div>
         </div>
+        </Container>
 
     );
 };

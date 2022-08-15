@@ -1,52 +1,58 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import '../Styling/AboutUs.css' // imports styles of the cards 
 // import {SocialMediaIconsReact} from 'social-media-icons-react'; // npm i social-media-icons-react to install the kit (I got the icons from this kit)
 import MemberData from './AboutUs.json'
+import { FaGithub, FaGoogle, FaLinkedin } from 'react-icons/fa';
+import About from './homePage/About';
 
-var subTitle= "Full-Stack Developer"
 
 
-export default function AboutUs() {
-    const [isHovering, setIsHovering] = useState(false) // setting the hover states
-    const handleMouseOver = () => {  // this function is activated when the mouse is over the card.
-        setIsHovering(true); // sets the state to be true to show more card content.
-      };
-      const handleMouseOut = () => { // this function is activated when the mouse is NOT over the card.
-        setIsHovering(false);
-      };
-  return (
-    <div> 
-      <h1 className='about-title'> Our Team </h1>
-    {MemberData.map(member => {
-      return (
-        <div className='prof-container' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}> {/* if you hover over this div, it expands the card. */ }
-        <div className='box'>
-          {console.log(member.image)}
-          <img className='img-box' src={member.image} alt="profile-img" />
-          <h2 className='name' >{member.name}</h2> 
-          <h3 className='des'>{subTitle}</h3>
-          
-          {isHovering && (
-            <div className='hoverShow'>
-           {/* <SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" borderWidth="5" borderStyle="solid" icon="github" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(26,28,30,1)" iconSize="5" roundness="20%" url={member.github} size="30" />
-           <SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" borderWidth="5" borderStyle="solid" icon="linkedin" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(26,28,30,1)" iconSize="5" roundness="20%" url={member.linkedin} size="30" />
-           <SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" borderWidth="5" borderStyle="solid" icon="mail" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(26,28,30,1)" iconSize="5" roundness="20%" url={member.mail} size="30" /> */}
-            {/* to modifiy the icon shape, color, etc.., use this website: https://social-media-icons-react-editor.netlify.app/ these icons cause errors, use another kit */} 
-             
-            </div> )}
-  
+class AboutUs extends React.Component {
+  render(){
+    return(
+      <>
+      <About/>
+      <div className="about" id="about">
+      <h2 className="main-title">Our Team</h2>
+      <div className="container">
+       {MemberData.map((card)=>{
+        return(
+          <div className="box">
+          <img src={card.image} alt="img" />
+          <div className='contentfull'>
+          <div className="content">
+            <h3>{card.name}</h3>
+            <p>{card.descrption}</p>
+          </div>
+          <div className="info">
+            <a href={card.email} className='google'>
+            <FaGoogle/>
+            </a>
+            <a href={card.github} className='github'>
+            <FaGithub/>
+            </a>
+            <a href={card.linkedin} className='linkend'>
+            <FaLinkedin/>
+            </a>
+          </div>
+          </div>
         </div>
-  
-  
+        )
+       })}
+    
       </div>
-      )
-    })}
-
-   
     </div>
-  )
+</>
+
+    )
+  }
+ 
+ 
+
+  
 }
+export default AboutUs;
 
 
  
