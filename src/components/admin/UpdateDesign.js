@@ -12,7 +12,7 @@ export default function UpdateDesign() {
   const [design, setDesign] = useState();
 
   async function fetchData() {
-    const {data} = await axios.get(`http://localhost:3001/getSelection/${id}`)
+    const {data} = await axios.get(`${process.env.REACT_APP_SERVER}/getSelection/${id}`)
     console.log(data);
     setDesign(data)
   }
@@ -23,7 +23,7 @@ export default function UpdateDesign() {
       'title': e.target.title.value!==''?e.target.title.value:design.title,
       'url': e.target.url.value!==''?e.target.url.value:design.url,
     }
-    await axios.put(`http://localhost:3001/editDesign/${id}`, {data})
+    await axios.put(`${process.env.REACT_APP_SERVER}/editDesign/${id}`, {data})
     swal("Design edited successfully!", "click the button to continue!", "success");
 
 

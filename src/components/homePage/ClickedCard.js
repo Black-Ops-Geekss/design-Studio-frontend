@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-// import { Spinner } from 'react-bootstrap';
 import LoadingSpinner from './Spinner';
 import { useParams } from 'react-router-dom';
 
@@ -17,7 +16,7 @@ export default function ClickedCard() {
     const { id } = useParams();
 
     const getDesign = async (selectedId) => {
-        await axios.get(`http://localhost:3001/getSelection/${selectedId}`).then(res => {
+        await axios.get(`${process.env.REACT_APP_SERVER}/getSelection/${selectedId}`).then(res => {
             setUrl(res.data[0].url);
             removeBG(res.data[0].url);
         }).catch(err => {
@@ -25,7 +24,7 @@ export default function ClickedCard() {
         });
         console.log(Url);
     }
-    // console.log(id);
+
 
     useEffect(() => {
         getDesign(id);
@@ -33,30 +32,29 @@ export default function ClickedCard() {
 
     const removeBG = async (AD) => {
 
-    //     const encodedParams = new URLSearchParams();
-    //     console.log(Url);
+        const encodedParams = new URLSearchParams();
+        console.log(Url);
 
-    //     encodedParams.append("image_url", AD);
+        encodedParams.append("image_url", AD);
 
-    //     const options = {
-    //         method: 'POST',
-    //         url: 'https://background-removal.p.rapidapi.com/remove',
-    //         headers: {
-    //             'content-type': 'application/x-www-form-urlencoded',
-    //             'X-RapidAPI-Key': '17bca93844msh56b9f5968f8ddf8p1ad44cjsn500e495feb5b',
-    //             'X-RapidAPI-Host': 'background-removal.p.rapidapi.com'
-    //         },
-    //         data: encodedParams
-    //     };
+        const options = {
+            method: 'POST',
+            url: 'https://background-removal.p.rapidapi.com/remove',
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'X-RapidAPI-Key': `${process.env.REACT_APP_RAPID_API_KEY}`,
+                'X-RapidAPI-Host': 'background-removal.p.rapidapi.com'
+            },
+            data: encodedParams
+        };
 
-    //    await axios.request(options).then(function (response) {
-    //         console.log(response.data);
-    //         setRemovedItem(response.data.response.image_url);
-    //     }).catch(function (error) {
+       await axios.request(options).then(function (response) {
+            console.log(response.data);
+            setRemovedItem(response.data.response.image_url);
+        }).catch(function (error) {
             
-    //         console.error(error);
-    //     });
-
+            console.error(error);
+        });
     }
 
 

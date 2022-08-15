@@ -18,7 +18,7 @@ export default class ManageDesigns extends Component {
 
 
   renderingImages = async () => {
-    const res = await axios.get(`http://localhost:3001/getCategories`);
+    const res = await axios.get(`${process.env.REACT_APP_SERVER}/getCategories`);
     this.setState({ designsArray: res.data,
       mapImages: res.data });
     console.log(res.data);
@@ -33,7 +33,7 @@ export default class ManageDesigns extends Component {
 
     console.log(a)
     if (a === "DELETE") {
-      await axios.delete(`http://localhost:3001/deleteDesign/${id}`);
+      await axios.delete(`${process.env.REACT_APP_SERVER}/deleteDesign/${id}`);
       this.renderingImages();
     }
   }
@@ -43,7 +43,7 @@ export default class ManageDesigns extends Component {
 
     console.log(a)
     if (a === "EDIT") {
-      await axios.put(`http://localhost:3001/editDesign/${id}`);
+      await axios.put(`${process.env.REACT_APP_SERVER}/editDesign/${id}`);
       this.renderingImages();
     }
   }

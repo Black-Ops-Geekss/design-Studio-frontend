@@ -18,7 +18,7 @@ class Cards extends Component {
   }
 
   renderingImages = async () => {
-    const res = await axios.get(`http://localhost:3001/getCategories`);
+    const res = await axios.get(`${process.env.REACT_APP_SERVER}/getCategories`);
     this.setState({ designsArray: res.data,
       mapImages: res.data });
     console.log(res.data);
