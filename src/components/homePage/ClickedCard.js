@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+// import { Spinner } from 'react-bootstrap';
+import LoadingSpinner from './Spinner';
 import { useParams } from 'react-router-dom';
 
 
@@ -31,29 +33,29 @@ export default function ClickedCard() {
 
     const removeBG = async (AD) => {
 
-        const encodedParams = new URLSearchParams();
-        console.log(Url);
+    //     const encodedParams = new URLSearchParams();
+    //     console.log(Url);
 
-        encodedParams.append("image_url", AD);
+    //     encodedParams.append("image_url", AD);
 
-        const options = {
-            method: 'POST',
-            url: 'https://background-removal.p.rapidapi.com/remove',
-            headers: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'X-RapidAPI-Key': '17bca93844msh56b9f5968f8ddf8p1ad44cjsn500e495feb5b',
-                'X-RapidAPI-Host': 'background-removal.p.rapidapi.com'
-            },
-            data: encodedParams
-        };
+    //     const options = {
+    //         method: 'POST',
+    //         url: 'https://background-removal.p.rapidapi.com/remove',
+    //         headers: {
+    //             'content-type': 'application/x-www-form-urlencoded',
+    //             'X-RapidAPI-Key': '17bca93844msh56b9f5968f8ddf8p1ad44cjsn500e495feb5b',
+    //             'X-RapidAPI-Host': 'background-removal.p.rapidapi.com'
+    //         },
+    //         data: encodedParams
+    //     };
 
-       await axios.request(options).then(function (response) {
-            console.log(response.data);
-            setRemovedItem(response.data.response.image_url);
-        }).catch(function (error) {
+    //    await axios.request(options).then(function (response) {
+    //         console.log(response.data);
+    //         setRemovedItem(response.data.response.image_url);
+    //     }).catch(function (error) {
             
-            console.error(error);
-        });
+    //         console.error(error);
+    //     });
 
     }
 
@@ -73,8 +75,12 @@ export default function ClickedCard() {
 
     return (
         <div>
+            
+            {!removedItem&&
+            <LoadingSpinner />
+            }
 
-            <img src={removedItem} alt="aaaa"  style={{width: "200px"}}/>
+            <img src={removedItem?removedItem:Url} alt="Design"  style={{width: "200px"}}/>
 
             <form onSubmit={handlerAddToCart}>
 

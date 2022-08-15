@@ -42,7 +42,6 @@ export default function Form () {
         console.log(order);
 
         const newOrder = {
-            "auth0Name": "Hamzah.2000",
             "name": order.name,
             "email": order.email,
             "phone": order.phone,

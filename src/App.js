@@ -17,6 +17,7 @@ import AboutUs from "./components/AboutUs";
 import CreateOwnDesign from "./components/CreateOwnDesign/CreateOwnDesign";
 import Cart from "./components/Cart/Cart";
 import ClickedCard from "./components/homePage/ClickedCard";
+import UpdateDesign from "./components/admin/UpdateDesign";
 
 
 export default class RouteIf extends Component{
@@ -72,6 +73,8 @@ export default class RouteIf extends Component{
                 <Route exact path="/Admin/ManageEmployees/:id" element=''></Route>
     
                 <Route exact path="/Admin/Profile" element={<Profile />}></Route>
+
+                <Route path='Admin/ManageDesigns/editDesign/:id' element={<UpdateDesign />}></Route>
                 
                 </>  
   
