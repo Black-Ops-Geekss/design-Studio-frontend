@@ -1,35 +1,47 @@
+import React from 'react';
+import '../Styling/AboutUs.css';
+import MemberData from './AboutUs.json';
+import { FaGithub, FaGoogle, FaLinkedin } from 'react-icons/fa';
+import About from './homePage/About';
 
-import React, { useState } from 'react'
-import '../Styling/AboutUs.css' 
-import MemberData from './AboutUs.json'
 
-var subTitle= "Full-Stack Developer"
 
-export default function AboutUs() {
-    const [isHovering, setIsHovering] = useState(false) 
-    const handleMouseOver = () => {  
-        setIsHovering(true); 
-      };
-      const handleMouseOut = () => {
-        setIsHovering(false);
-      };
-  return (
-    <div> 
-      <h1 className='about-title'> Our Team </h1>
-    {MemberData.map(member => {
-      return (
-        <div className='prof-container' onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-        <div className='box'>
-          <img className='img-box' src={member.image} alt="profile-img" />
-          <h2 className='name' >{member.name}</h2> 
-          <h3 className='des'>{subTitle}</h3>
-          {isHovering && (
-            <div className='hoverShow'>
-            </div> )}
+class AboutUs extends React.Component {
+  render () {
+    return (
+      <>
+        <About />
+        <div className="about" id="about">
+          <h2 className="main-title">Our Team</h2>
+          <div className="container">
+            {MemberData.map( ( card ) => {
+              return (
+                <div className="box">
+                  <img src={card.image} alt="img" />
+                  <div className='contentfull'>
+                    <div className="content">
+                      <h3>{card.name}</h3>
+                      <p>{card.descrption}</p>
+                    </div>
+                    <div className="info">
+                      <a href={card.email} className='google'>
+                        <FaGoogle />
+                      </a>
+                      <a href={card.github} className='github'>
+                        <FaGithub />
+                      </a>
+                      <a href={card.linkedin} className='linkend'>
+                        <FaLinkedin />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            } )}
+          </div>
         </div>
-      </div>
-      )
-    })}
-    </div>
-  )
+      </>
+    );
+  }
 }
+export default AboutUs;

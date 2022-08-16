@@ -19,7 +19,7 @@ export default function UpdateDesign () {
   const update = async ( e ) => {
     e.preventDefault();
     let price = e.target.price.value;
-    price = parseInt( price ) + ' JD';
+    price = /[0-9]/.test(price)?parseInt( price ) + ' JD':price;
     const data = {
       'title': e.target.title.value !== '' ? e.target.title.value : design.title,
       'url': e.target.url.value !== '' ? e.target.url.value : design.url,

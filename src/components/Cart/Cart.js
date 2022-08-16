@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import swal from 'sweetalert';
 import '../../Styling/Form.css';
 import axios from "axios";
+import { Container } from "react-bootstrap";
 
 
 export default function Cart () {
@@ -101,6 +102,7 @@ export default function Cart () {
 
                 }
             </div>
+            <Container >
             <div className="form-and-map">
                 <form ref={form} onSubmit={sendEmail} className='order-form'>
                     <label>Name</label>
@@ -128,6 +130,7 @@ export default function Cart () {
                 </form>
 
             </div>
+            </Container>
         </div>
 
     );

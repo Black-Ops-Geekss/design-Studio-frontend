@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { Navbar, NavItem } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import logo from './logo.png';
 
 
 
@@ -11,7 +12,7 @@ export default class Header extends Component {
   render () {
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand>Design Studio</Navbar.Brand>
+        <Navbar.Brand> <img src={logo} alt="logo" style={{width: "85px"}} /> Design Studio</Navbar.Brand>
         <div style={{ display: 'flex', fontSize: '20px', justifyContent: 'space-between', margin: '5px', color: 'white' }}>
           {!this.props.Admin && ( <>
             <NavItem><Link to="/" className="nav-link" style={{ margin: '0px 15px' }} >Home</Link></NavItem>
