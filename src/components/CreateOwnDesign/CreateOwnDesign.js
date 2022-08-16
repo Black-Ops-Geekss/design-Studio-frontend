@@ -5,11 +5,16 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styling/createDesign.css';
 import axios from 'axios';
+import tshirt from '../homePage/tshirt.png';
+import '../../Styling/ClickedCard.css';
+import LoadingSpinner from '../homePage/Spinner';
 
 export default function CreateOwnDesign () {
 
   const [ userUrl, setUserUrl ] = useState( '' );
   const [ removedItem, setRemovedItem ] = useState( '' );
+  const [ userRemoveBG, setuserRemoveBG ] = useState( false );
+
 
 
   const handlerAddToCart = ( e ) => {
@@ -35,6 +40,7 @@ export default function CreateOwnDesign () {
 
   const removeBG = async ( e ) => {
     e.preventDefault();
+    setuserRemoveBG( true );
     const encodedParams = new URLSearchParams();
     encodedParams.append( "image_url", userUrl );
     const options = {
@@ -69,20 +75,50 @@ export default function CreateOwnDesign () {
         </Form>
       </div>
       <div>
-        {userUrl !== "" &&
+        {userUrl !== "" && !userRemoveBG&&
           <Card style={{ width: '18rem' }} className="cardSt" >
             <Card.Img variant="top" src={userUrl} alt="error 404" />
-            {removedItem &&
-              <Card.Img variant="top" src={removedItem} alt="error 404" />
-            }
           </Card>
         }
       </div>
       <div>
-        <form >
-          <button type="submit" onClick={removeBG} className="btn btn-primary">See on T-shirt</button>
+
+        <div>
+          {userRemoveBG &&(
+            <>
+            {!removedItem && (
+                <>
+            <h2 style={{textAlign: 'center', marginTop: '50px'}}>Please Wait Until We Remove The Background </h2>
+                <LoadingSpinner />
+                </>
+            )
+            }
+             {removedItem && (
+                <>
+            <h2 style={{textAlign: 'center', marginTop: '50px'}}>See The Magic</h2>
+                </>
+            )
+            }
+            </>
+          )}
+          {removedItem&& (
+            <>
+            <div className="con-remove-t">
+      <img src={tshirt}  className='t-shirt-img'  alt="img" />
+      <img src={removedItem?removedItem:userUrl}  className='design-img-ch' alt="" />
+    </div>
+            </>
+          )}
+        </div>
+        {userUrl !== "" && (
+          <>
+        <form  style={{textAlign:'center', marginBottom:'30px'}} >
+          <button style={{marginRight:"10px"}} type="submit" onClick={removeBG} className="btn btn-primary">See on T-shirt</button>
           <button type="submit" onClick={handlerAddToCart} className="btn btn-primary">Add to Cart</button>
         </form>
+          </>
+        )}
+
       </div>
     </div>
   );
