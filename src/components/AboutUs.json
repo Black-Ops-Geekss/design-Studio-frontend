@@ -4,41 +4,48 @@
         "github": "https://github.com/AmaniAlsmadi",
         "linkedin": "https://www.linkedin.com/in/amani-smadi-856770208",
         "email": "smadi.amani94@gmail.com",
-        "image": "https://i.postimg.cc/d0pGPn8Q/Amani.jpg"
+        "image": "https://i.postimg.cc/d0pGPn8Q/Amani.jpg",
+        "descrption":"Full Stack Web Developer"
+
     },
     {
         "name": "Hamzah Aldaamas",
         "github": "https://github.com/hamzahhisham306",
         "linkedin": "https://www.linkedin.com/in/hamzah-aldaamas-204425246/",
         "email": "hamzahhisham306@gmail.com",
-        "image": "https://i.postimg.cc/pTjz28Zf/Hamzah.jpg"
+        "image": "https://i.postimg.cc/pTjz28Zf/Hamzah.jpg",
+        "descrption":"Full Stack Web Developer"
     },
     {
-        "name": "Mohammed Almomani",
+        "name": "Mohamed Momani",
         "github": "https://github.com/Mohammad-Almomani",
         "linkedin": "https://www.linkedin.com/in/mohammad-momani-77aba0197/",
         "email": "Mohammad.Momani970@gmail.com",
-        "image": "https://i.postimg.cc/HnC5jxZf/Mohammad.jpg"
+        "image": "https://i.postimg.cc/HnC5jxZf/Mohammad.jpg",
+        "descrption":"Full Stack Web Developer"
     },
     {
         "name": "Salah Mohammed",
         "github": "https://github.com/mohasal0101",
         "linkedin": "https://www.linkedin.com/in/salah-hamawi-98209a1b8/",
         "email": "mohasal0101@gmail.com",
-        "image": "https://i.postimg.cc/yxXRRH2W/Salah.jpg"
+        "image": "https://i.postimg.cc/yxXRRH2W/Salah.jpg",
+        "descrption":"Full Stack Web Developer"
     },
     {
         "name": "Yaser Odat",
         "github": "https://github.com/YAOdat",
         "linkedin": "https://www.linkedin.com/in/yaserodat/",
         "email": "yaserodat@outlook.com",
-        "image": "https://i.postimg.cc/pXRzHmnj/Yaser.jpg"
+        "image": "https://i.postimg.cc/pXRzHmnj/Yaser.jpg",
+        "descrption": "Full Stack Web Developer"
     },
     {
         "name": "Zaid Alshibi",
         "github": "https://github.com/zaidalshibi",
         "linkedin": "https://www.linkedin.com/in/zaidalshibi/",
         "email": "zaidealshibi@gmail.com",
-        "image": "https://i.postimg.cc/KcnBwP4F/Zaid.jpg"
+        "image": "https://i.postimg.cc/KcnBwP4F/Zaid.jpg",
+        "descrption":"Full Stack Web Developer"
     }
 ]

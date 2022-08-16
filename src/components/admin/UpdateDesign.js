@@ -13,13 +13,14 @@ export default function UpdateDesign () {
 
   async function fetchData () {
     const { data } = await axios.get( `${process.env.REACT_APP_SERVER}/getSelection/${id}` );
-    setDesign( data );
+    console.log( data[0] );
+    setDesign( data[0] );
   }
 
   const update = async ( e ) => {
     e.preventDefault();
     let price = e.target.price.value;
-    price = parseInt( price ) + ' JD';
+    price = /[0-9]/.test(price)?parseInt( price ) + ' JD':price;
     const data = {
       'title': e.target.title.value !== '' ? e.target.title.value : design.title,
       'url': e.target.url.value !== '' ? e.target.url.value : design.url,
@@ -33,23 +34,23 @@ export default function UpdateDesign () {
 
   useEffect( () => {
     fetchData();
-  } );
+  }, [] );
 
   return (
     <Form style={{ margin: "10px 30px" }} onSubmit={update}>
       <Form.Group className="mb-3" >
-        <Form.Label>Design Title</Form.Label>
-        <Form.Control id="title" type="text" defaultValue={design?.title} placeholder="Enter New Title" />
+        <Form.Label>Design Category</Form.Label>
+        <Form.Control id="title" type="text" placeholder={`${design?.category}`} />
       </Form.Group>
 
       <Form.Group className="mb-3" >
         <Form.Label>Design url</Form.Label>
-        <Form.Control id="url" type="text" defaultValue={design?.url} placeholder="New Design Url" />
+        <Form.Control id="url" type="url" placeholder={`${design?.url}`} />
       </Form.Group>
 
       <Form.Group className="mb-3" >
         <Form.Label>Design Price</Form.Label>
-        <Form.Control id="price" type="text" defaultValue={design?.price} placeholder="Enter New Price" />
+        <Form.Control id="price" type="number" placeholder={`${design?.price}`} />
       </Form.Group>
 
       <Button variant="primary" type="submit">

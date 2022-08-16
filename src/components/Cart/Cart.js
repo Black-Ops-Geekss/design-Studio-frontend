@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import swal from 'sweetalert';
 import '../../Styling/Form.css';
 import axios from "axios";
+import { Container } from "react-bootstrap";
 
 
 export default function Cart () {
@@ -60,7 +61,7 @@ export default function Cart () {
         };
 
         await axios.post( `${process.env.REACT_APP_SERVER}/userRequest`, { newOrder } ).then( () => {
-            emailjs.sendForm( 'service_wnvjbmc', 'template_6t03lfw', form.current, 'ug0blzHMhGz4I5o6P' ) // you can get keys when you create an account on EmailJS
+            emailjs.sendForm( 'service_wnvjbmc', 'template_6t03lfw', form.current, 'ug0blzHMhGz4I5o6P' )
                 .then( ( result ) => {
                     console.log( result.text );  // if the order was sent successfully this code is executed
                 }, ( error ) => {
@@ -71,44 +72,44 @@ export default function Cart () {
             swal( "Order Sent!", "It will be ready within 2 hours!", "success" );
 
             e.target.reset();
+            window.location.reload();
         }
         ).catch( err => {
             console.log( err );
         }
         );
-
-
     };
-
     return (
         <div>
             <div>
                 {userArray && (
                     <>
+                     <div className="cart-div">
+                        <div className="overlay-cart"></div>
                         {userArray.map( ( item, index ) => {
                             return (
-                                <div key={index}>
-                                    <img src={item} alt={`Item #${index}`} />
-                                    <button onClick={( e, index ) => handleRemove( e, index )}>Remove</button>
+                                <div className="cart-cart-div" key={index}>
+                                    <img src={item} alt={`Item #${index}`} className="img-cart-order" />
+                                    <button onClick={( e ) => handleRemove( e, index )} className="remove-button-cart">Remove</button>
                                 </div>
-
                             );
                         }
                         )}
+                    </div>
                     </>
                 )
-
-
                 }
             </div>
+            <Container >
             <div className="form-and-map">
+
                 <form ref={form} onSubmit={sendEmail} className='order-form'>
                     <label>Name</label>
-                    <input id="name" type="text" name="user_name" />
+                    <input id="name" type="text" name="user_name" required/>
                     <label>Email</label>
                     <input id="email" type="text" name="user_email" />
                     <label>Phone Number</label>
-                    <input id="phone" type="text" name="user_number" />
+                    <input id="phone" type="text" name="user_number"   required />
                     <br></br>
                     <label>Collecting Method</label>
                     <select name='delivery' value={collectMethod} onChange={handleSelect}>
@@ -128,13 +129,9 @@ export default function Cart () {
                 </form>
 
             </div>
+            </Container>
+
         </div>
 
     );
 };
-
-
-
-
-
-

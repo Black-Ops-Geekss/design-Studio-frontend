@@ -1,65 +1,70 @@
-import { Component } from 'react';
+import {  useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styling/Login.css';
 import ManageDesigns from './ManageDesigns';
+import { MdVpnKey } from "react-icons/md"; // https://react-icons.github.io/react-icons/icons?name=md
 
-export default class login extends Component {
-    constructor ( props ) {
-        super( props );
-        this.state = {
-            username: 'Admin',
-            password: 'Admin',
-            Auth: false,
-            Error: false,
-            Forget: false,
-        };
-    }
 
-    handlerSubmit = ( e ) => {
+
+function Login (props){
+
+    const [Auth, setAuth] = useState(false);
+    const [Error, setError] = useState(false);
+    const [Forget, setForget] = useState(false);
+
+    const handlerSubmit = (e) => {
         e.preventDefault();
         if ( e.target.user.value === 'Admin' && e.target.pass.value === 'Admin' ) {
-            this.setState( {
-                Auth: true,
-                Error: false
-            } );
-            this.props.onSubmit( true );
+           
+            setAuth(true)
+            setError(false)
+          
+           props.onSubmit( true );
         }
         else {
-            this.setState( {
-                Error: true,
-                Forget: false
-            } );
+            setError(true);
+            setForget(false);
         }
+    }
 
-    };
-    handlerForget = () => {
-        this.setState( {
-            Forget: true,
-            Error: false
-        } );
-    };
-    render () {
+    const handlerForget = (Forget) => {
+        setError(false);
+        setForget(true);
+    }
+
+
         return (
-            <>
-                {this.state.Auth ? <ManageDesigns /> : <div className='login'>
+            <div className='admin_main_container'>
+                {Auth ? <ManageDesigns /> : <div className='login'>
                     <div className='form-box'>
-                        <form className='form' onSubmit={this.handlerSubmit}>
-                            <input type='text' className='input' placeholder='User ID' required name='user' />
-                            <input type='password' className='input' placeholder='Enter password' required name='pass' />
-                            {this.state.Error && <Alert key='danger' variant='danger'>
+                        <h2>Admin Login</h2>
+                        <MdVpnKey className='admin-login-icon' />
+                        <form className='form' onSubmit={handlerSubmit}>
+                            <div className='admin-login-input'>
+                                <input type='text' required name='user' className="admin-input" />
+                                <label>Username</label>
+                            </div>
+                            <div className='admin-login-input'>
+                                <input type='password' required name='pass' className="admin-input" />
+                                <label>Password</label>
+                            </div>
+                            {Error && <Alert key='danger' variant='danger'>
                                 Your password and user is not Correct
                             </Alert>}
-                            <a href='#' onClick={this.handlerForget}>Forget Password</a>
-                            {this.state.Forget && <Alert key='light' variant='light'>
+                            {Forget && <Alert key='light' variant='light'>
                                 Please contact your Admin to have a new password</Alert>}
-                            <button type='submit' className='submit'>Login</button>
+                            <input id="submit" type="submit" name="" value="Submit" />
                         </form>
+                        <br />
+                        <p>  <a href='#' onClick={handlerForget}>Forget Password?</a> </p>
                     </div>
                 </div>
                 }
-            </>
+            </div>
         );
-    }
+    
 }
+
+export default Login;
 

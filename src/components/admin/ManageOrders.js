@@ -4,7 +4,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import '../../Styling/Order.css';
+import Container from 'react-bootstrap/Container';
 
 
 export default class ManageOrders extends Component {
@@ -48,9 +49,11 @@ export default class ManageOrders extends Component {
   render () {
     return (
       <>
+        <div >
+        <Container className='orders'>
+
         {this.state.ordersArray.filter( filterDesign => filterDesign.items !== null ).map( design => (
-          <div>
-            <Card style={{ width: '25rem' }}>
+            <Card style={{ width: '20rem' }} className="card-order">
               <Carousel fade>
                 {design.items.map( url => (
 
@@ -59,25 +62,29 @@ export default class ManageOrders extends Component {
                       className="d-block"
                       src={url}
                       alt="imageOrder"
-                      height="500"
+                      height="300"
                       width="400"
                     />
                   </Carousel.Item >
                 ) )}
               </Carousel >
-              <Card.Body>
+              <Card.Body className='card-body-order'>
                 <Card.Title>{design.name}</Card.Title>
                 <Card.Text>
                   {design.phone}<br />
                   {design.email}
                 </Card.Text>
-                <Button onClick={() => this.deleteOrder( design._id )} variant="primary">Delete order</Button>
-                <Button onClick={() => this.confirmOrder( design._id )} variant="primary">Confirm Order</Button>
+                <Button onClick={() => this.deleteOrder( design._id )} className="buttonorder">Delete order</Button>
+                <Button onClick={() => this.confirmOrder( design._id )} className="buttonorder" >Confirm Order</Button>
 
               </Card.Body>
             </Card>
-          </div>
         ) )}
+                  </Container>
+
+          </div>
+
+
       </>
     );
   };
