@@ -61,7 +61,7 @@ export default function Cart () {
         };
 
         await axios.post( `${process.env.REACT_APP_SERVER}/userRequest`, { newOrder } ).then( () => {
-            emailjs.sendForm( 'service_wnvjbmc', 'template_6t03lfw', form.current, 'ug0blzHMhGz4I5o6P' ) // you can get keys when you create an account on EmailJS
+            emailjs.sendForm( 'service_wnvjbmc', 'template_6t03lfw', form.current, 'ug0blzHMhGz4I5o6P' )
                 .then( ( result ) => {
                     console.log( result.text );  // if the order was sent successfully this code is executed
                 }, ( error ) => {
@@ -77,10 +77,7 @@ export default function Cart () {
             console.log( err );
         }
         );
-
-
     };
-
     return (
         <div>
             <div>
@@ -92,18 +89,16 @@ export default function Cart () {
                                     <img src={item} alt={`Item #${index}`} />
                                     <button onClick={( e, index ) => handleRemove( e, index )}>Remove</button>
                                 </div>
-
                             );
                         }
                         )}
                     </>
                 )
-
-
                 }
             </div>
             <Container >
             <div className="form-and-map">
+
                 <form ref={form} onSubmit={sendEmail} className='order-form'>
                     <label>Name</label>
                     <input id="name" type="text" name="user_name" />
@@ -131,6 +126,7 @@ export default function Cart () {
 
             </div>
             </Container>
+
         </div>
 
     );
