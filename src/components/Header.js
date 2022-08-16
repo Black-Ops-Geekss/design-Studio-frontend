@@ -1,4 +1,3 @@
-import React from 'react';
 import { Component } from 'react';
 import { Navbar, NavItem } from 'react-bootstrap';
 import { Link } from "react-router-dom";
@@ -8,9 +7,11 @@ import logo from './logo.png';
 
 
 
+
 export default class Header extends Component {
   render () {
     return (
+    
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand> <img src={logo} alt="logo" style={{width: "85px"}} /> Design Studio</Navbar.Brand>
         <div style={{ display: 'flex', fontSize: '20px', justifyContent: 'space-between', margin: '5px', color: 'white' }}>
@@ -35,9 +36,11 @@ export default class Header extends Component {
               </NavDropdown>
             </>
           )}
+
         </div>
       </Navbar>
-    );
 
+    );
   }
 }
+
