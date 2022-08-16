@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styling/Login.css';
+
 import ManageDesigns from './ManageDesigns';
 
 export default class login extends Component {
@@ -41,25 +42,32 @@ export default class login extends Component {
     };
     render () {
         return (
-            <>
+            <div className='admin_main_container'>
                 {this.state.Auth ? <ManageDesigns /> : <div className='login'>
                     <div className='form-box'>
+                      <h2>Login</h2>
                         <form className='form' onSubmit={this.handlerSubmit}>
-                            <input type='text' className='input' placeholder='User ID' required name='user' />
-                            <input type='password' className='input' placeholder='Enter password' required name='pass' />
+                            <div className='admin-login-input'>
+                            <input type='text' required name='user' className="admin-input"/>
+                            <label>Username</label>
+                            </div>
+                            <div className='admin-login-input'>
+                            <input type='password'  required name='pass' className="admin-input" />
+                            <label>Password</label>
+                            </div>
                             {this.state.Error && <Alert key='danger' variant='danger'>
                                 Your password and user is not Correct
                             </Alert>}
-                            <a href='#' onClick={this.handlerForget}>Forget Password</a>
                             {this.state.Forget && <Alert key='light' variant='light'>
                                 Please contact your Admin to have a new password</Alert>}
-                            <button type='submit' className='submit'>Login</button>
+                                <input id="submit" type="submit" name="" value="Log In"/>
                         </form>
+                          <p>  <a href='#' onClick={this.handlerForget}>Forget Password?</a> </p>
+
                     </div>
                 </div>
                 }
-            </>
+            </div>
         );
     }
 }
-
