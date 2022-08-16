@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGithub, FaFacebook, FaTwitter } from 'react-icons/fa';
+import logo from './logo.png'
 import '../Styling/Footer.css';
 
 
@@ -10,7 +11,7 @@ class Footer extends React.Component {
       <div className="footer">
         <div className="container">
           <div className="footerB">
-            <h3>ASAC</h3>
+            <h3><img  src={logo} style={{width: "175px"}} alt='Logo'  /></h3>
             <ul className="social">
               <li>
                 <a href="#url" className="facebook">
@@ -39,7 +40,7 @@ class Footer extends React.Component {
           </div>
           <div className="footerB">
             <div className="line">
-              <div className="info">ِAmman , airport Street</div>
+              <div className="info">Amman , airport Street</div>
             </div>
             <div className="line">
               <div className="info">working Hours: From 8:00 AM to 5:00 PM</div>
