@@ -1,0 +1,14 @@
+.con-remove-t{
+    text-align: center;
+    position: relative;
+  }
+  .t-shirt-img{
+  width: 500px;
+  }
+  .design-img-ch{
+  width: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30%;
+  position: absolute;
+  }

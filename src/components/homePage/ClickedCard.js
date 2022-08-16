@@ -2,8 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import LoadingSpinner from './Spinner';
 import { useParams } from 'react-router-dom';
-
-
+import tshirt from './tshirt.png';
+import { Card } from 'react-bootstrap';
+import '../../Styling/ClickedCard.css';
 
 
 localStorage.setItem( 'addedItemKey', "null" );
@@ -64,12 +65,30 @@ export default function ClickedCard () {
 
     return (
         <div>
-
-            {!removedItem &&
+            {!removedItem && (
+                <>
+            <h2 style={{textAlign: 'center', marginTop: '50px'}}>Please Wait Until We Remove The Background </h2>
                 <LoadingSpinner />
+                </>
+            )
             }
-            <img src={removedItem ? removedItem : Url} alt="Design" style={{ width: "200px" }} />
-            <form onSubmit={handlerAddToCart}>
+             {removedItem && (
+                <>
+            <h2 style={{textAlign: 'center', marginTop: '50px'}}>See The Magic</h2>
+                </>
+            )
+            }
+
+           
+        
+           <div className="con-remove-t">
+      <img src={tshirt}  className='t-shirt-img'  alt="img" />
+      <img src={removedItem?removedItem:Url}  className='design-img-ch' alt="" />
+    </div>
+
+
+          
+            <form style={{textAlign:'center', marginBottom:'30px'}} onSubmit={handlerAddToCart}>
                 <button type="submit" className="btn btn-primary">Add to Cart</button>
             </form>
         </div>
