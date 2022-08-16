@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import {  useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styling/Login.css';
@@ -7,49 +7,40 @@ import { MdVpnKey } from "react-icons/md"; // https://react-icons.github.io/reac
 
 
 
-export default class login extends Component {
-    constructor ( props ) {
-        super( props );
-        this.state = {
-            username: 'Admin',
-            password: 'Admin',
-            Auth: false,
-            Error: false,
-            Forget: false,
-        };
-    }
+function Login (props){
 
-    handlerSubmit = ( e ) => {
+    const [Auth, setAuth] = useState(false);
+    const [Error, setError] = useState(false);
+    const [Forget, setForget] = useState(false);
+
+    const handlerSubmit = (e) => {
         e.preventDefault();
         if ( e.target.user.value === 'Admin' && e.target.pass.value === 'Admin' ) {
-            this.setState( {
-                Auth: true,
-                Error: false
-            } );
-            this.props.onSubmit( true );
+           
+            setAuth(true)
+            setError(false)
+          
+           props.onSubmit( true );
         }
         else {
-            this.setState( {
-                Error: true,
-                Forget: false
-            } );
+            setError(true);
+            setForget(false);
         }
+    }
 
-    };
-    handlerForget = () => {
-        this.setState( {
-            Forget: true,
-            Error: false
-        } );
-    };
-    render () {
+    const handlerForget = (Forget) => {
+        setError(false);
+        setForget(true);
+    }
+
+
         return (
             <div className='admin_main_container'>
-                {this.state.Auth ? <ManageDesigns /> : <div className='login'>
+                {Auth ? <ManageDesigns /> : <div className='login'>
                     <div className='form-box'>
                         <h2>Admin Login</h2>
                         <MdVpnKey className='admin-login-icon' />
-                        <form className='form' onSubmit={this.handlerSubmit}>
+                        <form className='form' onSubmit={handlerSubmit}>
                             <div className='admin-login-input'>
                                 <input type='text' required name='user' className="admin-input" />
                                 <label>Username</label>
@@ -58,20 +49,22 @@ export default class login extends Component {
                                 <input type='password' required name='pass' className="admin-input" />
                                 <label>Password</label>
                             </div>
-                            {this.state.Error && <Alert key='danger' variant='danger'>
+                            {Error && <Alert key='danger' variant='danger'>
                                 Your password and user is not Correct
                             </Alert>}
-                            {this.state.Forget && <Alert key='light' variant='light'>
+                            {Forget && <Alert key='light' variant='light'>
                                 Please contact your Admin to have a new password</Alert>}
                             <input id="submit" type="submit" name="" value="Submit" />
                         </form>
                         <br />
-                        <p>  <a href='#' onClick={this.handlerForget}>Forget Password?</a> </p>
+                        <p>  <a href='#' onClick={handlerForget}>Forget Password?</a> </p>
                     </div>
                 </div>
                 }
             </div>
         );
-    }
+    
 }
+
+export default Login;
 

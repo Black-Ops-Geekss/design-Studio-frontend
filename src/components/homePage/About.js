@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import logo from '../logo.jpg'
 import '../../Styling/About.css'
  class About extends Component {
   render() {
@@ -7,12 +8,14 @@ import '../../Styling/About.css'
 <div className="main-container">
 
 <div className="card-container">
-    <span className="pro">About Us</span>
-    <img className="round" src="https://i.ytimg.com/vi/rCRg16vYABk/maxresdefault.jpg" alt="user" width={127} height={128}/>
+    <img className="round" src={logo} alt="user" width={127} height={128}/>
+    <div className="card-content-text">
     <h3>Design Studio</h3>
     <h6>Location: Amman, Jordan</h6>
     <p>Design Studio is a creative print-on-demand marketplace where you can discover & buy unique products, gifts & artwork created by artists around the world. <br/> <br/> Since our founding in 2022 and we aim to increase productivity and expand our customer list. We provide customers with latest technologies. </p>
+    </div>
     <div className="buttons">
+
 
     </div>
     <div className="skills">

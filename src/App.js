@@ -53,19 +53,21 @@ export default class RouteIf extends Component{
               <Route exact path="/CreateDesign"element={<CreateOwnDesign />}></Route>
   
               {/* Main Page routes */}
-  
+              {!this.state.Auth&&(
               <Route exact path="/Admin" element={<LogIn onSubmit={this.getAdmin} />}></Route>
-
+              )}
   
               {/* Admin Page routes */}
   
               {this.state.Auth&&(
   
                 <>
+                <Route exact path="/Admin" element={<ManageDesigns onSubmit={this.getAdmin} />}></Route>
+
                 {/* added the main rout for the manage designs, and kept the /:id for later to work on */}
-                <Route path='/Admin/ManageDesigns' element={<ManageDesigns />}></Route>
+                {/* <Route path='/Admin/ManageDesigns' element={<ManageDesigns />}></Route> */}
     
-                <Route path='/Admin/ManageDesigns/:id' element=''></Route>
+                <Route path='/Admin/:id' element=''></Route>
     
                 {/* added the main rout for the manage employees, and kept the /:id for later to work on */}
                 <Route exact path="/Admin/ManageOrders" element={<ManageOrders />}></Route>
@@ -74,7 +76,7 @@ export default class RouteIf extends Component{
     
                 <Route exact path="/Admin/Profile" element={<Profile />}></Route>
 
-                <Route path='Admin/ManageDesigns/editDesign/:id' element={<UpdateDesign />}></Route>
+                <Route path='Admin/editDesign/:id' element={<UpdateDesign />}></Route>
                 
                 </>  
   

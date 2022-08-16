@@ -72,6 +72,7 @@ export default function Cart () {
             swal( "Order Sent!", "It will be ready within 2 hours!", "success" );
 
             e.target.reset();
+            window.location.reload();
         }
         ).catch( err => {
             console.log( err );
@@ -83,15 +84,18 @@ export default function Cart () {
             <div>
                 {userArray && (
                     <>
+                     <div className="cart-div">
+                        <div className="overlay-cart"></div>
                         {userArray.map( ( item, index ) => {
                             return (
-                                <div key={index}>
-                                    <img src={item} alt={`Item #${index}`} />
-                                    <button onClick={( e, index ) => handleRemove( e, index )}>Remove</button>
+                                <div className="cart-cart-div" key={index}>
+                                    <img src={item} alt={`Item #${index}`} className="img-cart-order" />
+                                    <button onClick={( e ) => handleRemove( e, index )} className="remove-button-cart">Remove</button>
                                 </div>
                             );
                         }
                         )}
+                    </div>
                     </>
                 )
                 }
@@ -101,11 +105,11 @@ export default function Cart () {
 
                 <form ref={form} onSubmit={sendEmail} className='order-form'>
                     <label>Name</label>
-                    <input id="name" type="text" name="user_name" />
+                    <input id="name" type="text" name="user_name" required/>
                     <label>Email</label>
                     <input id="email" type="text" name="user_email" />
                     <label>Phone Number</label>
-                    <input id="phone" type="text" name="user_number" />
+                    <input id="phone" type="text" name="user_number"   required />
                     <br></br>
                     <label>Collecting Method</label>
                     <select name='delivery' value={collectMethod} onChange={handleSelect}>
@@ -131,9 +135,3 @@ export default function Cart () {
 
     );
 };
-
-
-
-
-
-
