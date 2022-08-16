@@ -48,37 +48,40 @@ export default class ManageOrders extends Component {
   render () {
     return (
       <>
-        {this.state.ordersArray.filter( filterDesign => filterDesign.items !== null ).map( design => (
-          <div>
-            <Card style={{ width: '25rem' }}>
-              <Carousel fade>
-                {design.items.map( url => (
-
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src={url}
-                      alt="imageOrder"
-                      height="500"
-                      width="400"
-                    />
-                  </Carousel.Item >
-                ) )}
-              </Carousel >
-              <Card.Body>
-                <Card.Title>{design.name}</Card.Title>
-                <Card.Text>
-                  {design.phone}<br />
-                  {design.email}
-                </Card.Text>
-                <Button onClick={() => this.deleteOrder( design._id )} variant="primary">Delete order</Button>
-                <Button onClick={() => this.confirmOrder( design._id )} variant="primary">Confirm Order</Button>
-
-              </Card.Body>
-            </Card>
-          </div>
-        ) )}
+        {!this.state.ordersArray.length ? (
+          <h1 style={{ height: '700px', textAlign: 'center', paddingTop: '30px' }}>You Don't Have Any Orders For Now</h1>
+        )
+          : (
+            this.state.ordersArray.filter( filterDesign => filterDesign.items !== null ).map( design => (
+              <div>
+                <Card style={{ width: '25rem' }}>
+                  <Carousel fade>
+                    {design.items.map( url => (
+                      <Carousel.Item>
+                        <img
+                          className="d-block"
+                          src={url}
+                          alt="imageOrder"
+                          height="500"
+                          width="400"
+                        />
+                      </Carousel.Item >
+                    ) )}
+                  </Carousel >
+                  <Card.Body>
+                    <Card.Title>{design.name}</Card.Title>
+                    <Card.Text>
+                      {design.phone}<br />
+                      {design.email}
+                    </Card.Text>
+                    <Button onClick={() => this.deleteOrder( design._id )} variant="primary">Delete order</Button>
+                    <Button onClick={() => this.confirmOrder( design._id )} variant="primary">Confirm Order</Button>
+                  </Card.Body>
+                </Card>
+              </div>
+            ) )
+          )}
       </>
     );
-  };
-};
+  }
+}

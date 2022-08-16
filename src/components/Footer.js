@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaGithub, FaFacebook, FaTwitter } from 'react-icons/fa';
-import logo from './logo.png'
+import logo from './logo.png';
 import '../Styling/Footer.css';
+import { Container } from 'react-bootstrap';
 
 
 
@@ -9,9 +10,9 @@ class Footer extends React.Component {
   render () {
     return ( <>
       <div className="footer">
-        <div className="container">
+        <Container>
           <div className="footerB">
-            <h3><img  src={logo} style={{width: "175px"}} alt='Logo'  /></h3>
+            <h3><img src={logo} style={{ width: "175px" }} alt='Logo' /></h3>
             <ul className="social">
               <li>
                 <a href="#url" className="facebook">
@@ -54,7 +55,7 @@ class Footer extends React.Component {
           </div>
           <iframe width="250" height="150" id="gmap_canvas" src='https://maps.google.com/maps?q=LTUC&t=&z=9&ie=UTF8&iwloc=&output=embed' title='LUTC' frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
           </iframe>
-        </div>
+        </Container>
         <p className="copyright">© 2022 Copyright : Black Ops Geekss</p>
       </div>
     </>
