@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import LoadingSpinner from './Spinner';
 import { useParams } from 'react-router-dom';
 import tshirt from './tshirt.png';
-import { Card } from 'react-bootstrap';
 import '../../Styling/ClickedCard.css';
 
 

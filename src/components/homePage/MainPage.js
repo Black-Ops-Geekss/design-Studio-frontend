@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import Cards from './Cards';
-import Carousel from './Carousel';
+import React, { Component } from 'react'
+import Cards from './Cards'
+import Carousel from './Carousel'
 import { Link } from "react-router-dom";
 
 export default class MainPage extends Component {
-  render () {
+  render() {
     return (
       <div>
         <Carousel />
@@ -13,6 +13,6 @@ export default class MainPage extends Component {
           <Link to="/CreateDesign" className="a" style={{ margin: '0px 15px' }} >Create Your Own Design ?</Link>
         </div>
       </div>
-    );
+    )
   }
 }
