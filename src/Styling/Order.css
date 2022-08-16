@@ -1,0 +1,47 @@
+.card-order{
+    display: flex !important;
+}
+.orders {
+   
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+
+}
+.buttonorder{
+    margin-left: 15px;
+    border-color: #00ADB5;
+    background-color: #00ADB5;
+    color: #EEEEEE;
+}
+.d-block{
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+.card-body-order{
+    color: #EEEEEE;
+    background-color: #222831;
+}
+.img-cart-order{
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+.remove-button{
+    background-color: #00ADB5;
+    border: none;
+    color: #EEEEEE;
+    padding: 10px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}

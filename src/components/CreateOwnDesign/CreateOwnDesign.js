@@ -8,6 +8,7 @@ import axios from 'axios';
 import tshirt from '../homePage/tshirt.png';
 import '../../Styling/ClickedCard.css';
 import LoadingSpinner from '../homePage/Spinner';
+import swal from 'sweetalert';
 
 export default function CreateOwnDesign () {
 
@@ -27,6 +28,8 @@ export default function CreateOwnDesign () {
       userCart.push( userUrl );
       localStorage.setItem( 'addedItemKey', JSON.stringify( userCart ) );
     }
+    swal( "Item Added to Your Cart!", "", "success" );
+
   };
 
   const formInput = ( e ) => {

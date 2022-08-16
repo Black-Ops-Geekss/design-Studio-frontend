@@ -24,7 +24,7 @@ class AboutUs extends React.Component {
                       <p>{card.descrption}</p>
                     </div>
                     <div className="info">
-                      <a href={card.email} className='google'>
+                      <a href={`mailto:${card.email}`} className='google'>
                         <FaGoogle />
                       </a>
                       <a href={card.github} className='github'>

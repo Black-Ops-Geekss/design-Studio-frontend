@@ -5,7 +5,7 @@
         "linkedin": "https://www.linkedin.com/in/amani-smadi-856770208",
         "email": "smadi.amani94@gmail.com",
         "image": "https://i.postimg.cc/d0pGPn8Q/Amani.jpg",
-        "descrption":" Hi, I’m Amani Alsmadi I’m interested in programming I’m currently learning JavaScriptI’m looking to collaborate with other programmers"
+        "descrption":"Full Stack Web Developer"
 
     },
     {
@@ -14,15 +14,15 @@
         "linkedin": "https://www.linkedin.com/in/hamzah-aldaamas-204425246/",
         "email": "hamzahhisham306@gmail.com",
         "image": "https://i.postimg.cc/pTjz28Zf/Hamzah.jpg",
-        "descrption":"I am Hamzah Aldaamas 🙋🏻‍♂️,I am 22 years old. I studied cyber security at Al-Balqa Applied University. I am learning with LTUC to be Full Stack Developer. I love learning programming and developing myself.    "
+        "descrption":"Full Stack Web Developer"
     },
     {
-        "name": "Mohammed Almomani",
+        "name": "Mohamed Momani",
         "github": "https://github.com/Mohammad-Almomani",
         "linkedin": "https://www.linkedin.com/in/mohammad-momani-77aba0197/",
         "email": "Mohammad.Momani970@gmail.com",
         "image": "https://i.postimg.cc/HnC5jxZf/Mohammad.jpg",
-        "descrption":"I am a 25 years old mechanical engineer who graduated from the University of Jordan. I am attending to be a developer now."
+        "descrption":"Full Stack Web Developer"
     },
     {
         "name": "Salah Mohammed",
@@ -30,7 +30,7 @@
         "linkedin": "https://www.linkedin.com/in/salah-hamawi-98209a1b8/",
         "email": "mohasal0101@gmail.com",
         "image": "https://i.postimg.cc/yxXRRH2W/Salah.jpg",
-        "descrption":"Mechatronics Engineer Learning how to become a developer ! Student at ASAC Learning JavaScript"
+        "descrption":"Full Stack Web Developer"
     },
     {
         "name": "Yaser Odat",
@@ -38,7 +38,7 @@
         "linkedin": "https://www.linkedin.com/in/yaserodat/",
         "email": "yaserodat@outlook.com",
         "image": "https://i.postimg.cc/pXRzHmnj/Yaser.jpg",
-        "descrption": "I'm Yaser and I am learning Javascript."
+        "descrption": "Full Stack Web Developer"
     },
     {
         "name": "Zaid Alshibi",
@@ -46,6 +46,6 @@
         "linkedin": "https://www.linkedin.com/in/zaidalshibi/",
         "email": "zaidealshibi@gmail.com",
         "image": "https://i.postimg.cc/KcnBwP4F/Zaid.jpg",
-        "descrption":"Mechatronics Engineer Learning how to become a developer ! Student at ASAC Learning JavaScript"
+        "descrption":"Full Stack Web Developer"
     }
 ]

@@ -5,10 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Button, Card, Nav } from 'react-bootstrap';
 
 class Cards extends Component {
-  constructor ( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
       categorize: '',
       mapImages: [],
@@ -18,46 +19,46 @@ class Cards extends Component {
   }
 
   renderingImages = async () => {
-    const res = await axios.get( `${process.env.REACT_APP_SERVER}/getCategories` );
-    this.setState( {
+    const res = await axios.get(`${process.env.REACT_APP_SERVER}/getCategories`);
+    this.setState({
       designsArray: res.data,
       mapImages: res.data
-    } );
+    });
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.renderingImages();
   }
 
   // filter images by category
-  handlerSubmit = ( e ) => {
+  handlerSubmit = (e) => {
     e.preventDefault();
-    this.setState( {
+    this.setState({
       categorize: e.target.value,
-    } );
-    this.handlerFilter( e.target.value );
+    });
+    this.handlerFilter(e.target.value);
 
   };
-  handlerFilter = ( categorize ) => {
-    if ( categorize === 'All' ) {
+  handlerFilter = (categorize) => {
+    if (categorize === 'All') {
       let images = this.state.designsArray;
 
-      this.setState( {
+      this.setState({
         mapImages: images,
-      } );
+      });
     }
     else {
-      let images = this.state.designsArray.filter( ( img ) => {
+      let images = this.state.designsArray.filter((img) => {
         return img.category === categorize;
-      } );
+      });
 
-      this.setState( {
+      this.setState({
         mapImages: images
-      } );
+      });
     }
   };
 
-  render () {
+  render() {
 
     return (
       <>
@@ -67,17 +68,55 @@ class Cards extends Component {
             <Form.Select onChange={this.handlerSubmit}>
               <option>All</option>
               <option>galaxy</option>
-              <option>cool</option>
-              <option>fashion</option>
-              <option>paint</option>
+              <option>jordan</option>
+              <option>skeleton</option>
+              <option>rose</option>
+              <option>baby groot</option>
+              <option>robot</option>
             </Form.Select>
           </Form.Group>
         </Container>
+
+        {/* 
+        <Container className='form'>
+        <Nav fill variant="tabs" onChange={this.handlerSubmit}>
+            <Nav.Item>
+              <Nav.Link value='all' >All</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link value='Galaxy' eventKey="galaxy">Galaxy </Nav.Link >
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="cool">Cool</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="fashion">Fashion</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link>Pint</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Container> */}
+
+
+
         <Container className='images'>
 
-          {this.state.mapImages.map( img => {
-            return <Link to={`./ClickedCard/${img._id}`}><img key={img._id} src={img.url} alt="img" /></Link>;
-          } )}
+          {this.state.mapImages.map(img => {
+            return (
+
+              <Card key={img._id} style={{ width: '21rem' }}>
+                <Card.Img src={img.url} alt="img" variant="top" />
+                <Card.Body>
+                  <Card.Title>{img.category}</Card.Title>
+                  <Card.Text>
+                    Price: {img.price}
+                  </Card.Text>
+                  <Link to={`./ClickedCard/${img._id}`}> <Button variant="primary">See on T-shirt</Button></Link>
+                </Card.Body>
+              </Card>
+            )
+          })}
         </Container>
       </>
     );
@@ -85,3 +124,4 @@ class Cards extends Component {
 }
 
 export default Cards;
+
