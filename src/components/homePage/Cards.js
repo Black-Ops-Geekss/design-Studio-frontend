@@ -14,7 +14,6 @@ class Cards extends Component {
       categorize: '',
       mapImages: [],
       designsArray: [],
-      // categories: ["galaxy", "cool", "fashion", "paint"],
     };
   }
 
@@ -62,7 +61,7 @@ class Cards extends Component {
 
     return (
       <>
-        <Container className='form'>
+        {/* <Container className='form'>
           <Form.Group className="mb-3">
             <Form.Label> Select Category</Form.Label>
             <Form.Select onChange={this.handlerSubmit}>
@@ -75,7 +74,7 @@ class Cards extends Component {
               <option>robot</option>
             </Form.Select>
           </Form.Group>
-        </Container>
+        </Container> */}
 
         {/* 
         <Container className='form'>
@@ -108,7 +107,7 @@ class Cards extends Component {
               <Card key={img._id} style={{ width: '21rem' }}>
                 <Card.Img src={img.url} alt="img" variant="top" />
                 <Card.Body>
-                  <Card.Title>{img.category}</Card.Title>
+                  <Card.Title>{img.category.toUpperCase()}</Card.Title>
                   <Card.Text>
                     Price: {img.price}
                   </Card.Text>
@@ -118,6 +117,16 @@ class Cards extends Component {
             )
           })}
         </Container>
+
+        <Form id="inputUrl">
+          <Form.Group className="mb-3">
+            <Form.Label>Subscribe to News Letter</Form.Label>
+            <Form.Control id="inputUrl" type="url" placeholder="Enter your email ..." />
+            <Button className='button' variant="primary" type="submit">
+            Subscribe
+            </Button>
+          </Form.Group>
+        </Form>
       </>
     );
   }
