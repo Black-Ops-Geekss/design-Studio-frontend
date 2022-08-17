@@ -53,7 +53,7 @@ export default function UpdateDesign () {
         <Form.Control id="price" type="number" placeholder={`${design?.price}`} />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" className='button-card-2' style={{margin:'auto', textAlign:'center'}}>
         Save Changes
       </Button>
     </Form>
