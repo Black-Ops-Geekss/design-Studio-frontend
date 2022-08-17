@@ -71,8 +71,9 @@ export default class ManageOrders extends Component {
               <Card.Body className='card-body-order'>
                 <Card.Title>{design.name}</Card.Title>
                 <Card.Text>
-                  {design.phone}<br />
-                  {design.email}
+                 Phone: {design.phone}<br />
+                 Email: {design.email}<br />
+                 City: {design.location}
                 </Card.Text>
                 <Button onClick={() => this.deleteOrder( design._id )} className="buttonorder">Delete order</Button>
                 <Button onClick={() => this.confirmOrder( design._id )} className="buttonorder" >Confirm Order</Button>
