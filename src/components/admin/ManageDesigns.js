@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import '../../Styling/Mang.css'
 
 export default class ManageDesigns extends Component {
   constructor ( props ) {
@@ -53,13 +52,13 @@ export default class ManageDesigns extends Component {
           
           </div>
           <div className="info">
-          <Link to={`/Admin/editDesign/${card._id}`}><Button className="edit"
+          <Link to={`/Admin/editDesign/${card._id}`}><Button className="button-card-2"
            >
           Edit
           </Button>
           </Link>
           <Button
-             className="delete"
+             className='button-card-2'
              onClick={() => this.deleteDesign( card._id )}
           >
           Delete

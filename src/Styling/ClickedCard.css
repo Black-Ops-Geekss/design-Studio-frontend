@@ -12,3 +12,15 @@
   bottom: 30%;
   position: absolute;
   }
+  .button-card-2{
+    border: none;
+    color: #EEE;
+    background-color: #591BC5 !important;
+    padding: 15px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+  

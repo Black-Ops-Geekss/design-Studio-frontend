@@ -9,20 +9,21 @@
 .form-box {
   width: 400px;
   position: absolute;
-  top: 50%;
+  top: 61%;
+  height: 600px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, .8);
+  background: #000000;
   padding: 30px;
   box-sizing: border-box;
-  box-shadow: 0px 15px 25px rgba(0, 0, 0, .5);
+  box-shadow: 0px 15px 25px rgb(0 0 0 / 50%);
   border-radius: 10px;
 }
 
 .form-box h2 {
   margin: 0 0 30px;
   padding: 0;
-  color: #fff;
+  color: #EEE;
   text-align: center;
 }
 
@@ -35,7 +36,7 @@
 }
 
 .form-box a {
-  color: #9a9d9e;
+  color: #EEE;
   font-size: 14px;
   text-decoration: none;
 }
@@ -73,7 +74,7 @@
 .form-box .admin-login-input input:valid~label {
   top: -18px;
   left: 0;
-  color: #03a9f4;
+  color: #591BC5;
   font-size: 12px;
 }
 
@@ -81,10 +82,10 @@
   background: transparent;
   border: none;
   outline: none;
-  background: rgb(34, 193, 195);
-  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(32, 224, 176, 1) 100%);
+  background: #591BC5;
+  background: #591BC5;
   color: #fff;
-  padding: 10px 20px;
+  padding: 20px 20px;
   cursor: pointer;
   border-radius: 5px;
   padding: 3px;
@@ -97,7 +98,7 @@
   padding: 0;
   font-size: 75px;
   color: rgb(34, 193, 195);
-  color: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(32, 224, 176, 1) 100%);
+  color: #591BC5;
   background: transparent;
   width: 100%;
 }

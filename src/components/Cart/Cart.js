@@ -5,7 +5,7 @@ import '../../Styling/Form.css';
 import axios from "axios";
 import { Container } from "react-bootstrap";
 
-
+import OrderImage from  './D.png';
 export default function Cart () {
 
 
@@ -103,17 +103,23 @@ export default function Cart () {
             </div>
             <Container >
             <div className="form-and-map">
-
+            <div class="ordercontainer">
+            <div class="order-box">
+            <div class="order-left">
+            <img src={OrderImage} width="100%" height="100%" alt=""/>
+               </div>
+               <div class="order-right">
+               <h2 class="order-now-title">Order Now</h2>
                 <form ref={form} onSubmit={sendEmail} className='order-form'>
-                    <label>Name</label>
-                    <input id="name" type="text" name="user_name" required/>
-                    <label>Email</label>
-                    <input id="email" type="text" name="user_email" />
-                    <label>Phone Number</label>
-                    <input id="phone" type="text" name="user_number"   required />
-                    <br></br>
-                    <label>Select City</label>
-                    <select id="location" name='location' value={collectMethod} onChange={handleSelect}>
+                    
+                    <input className='order-field' id="name" type="text" name="user_name" placeholder="Your Name" required/>
+                   
+                    <input className='order-field' id="email" type="text" name="user_email" placeholder="Your Email"/>
+                   
+                    <input className='order-field' id="phone" type="text" name="user_number"  placeholder="Phone Number" required />
+                    
+                    
+                    <select className='order-field' id="location" name='location' value={collectMethod} onChange={handleSelect}>
                         <option value="amman">Amman</option>
                         <option value="ajloun">Ajloun</option>
                         <option value="aqaba">Aqaba</option>
@@ -128,11 +134,13 @@ export default function Cart () {
                         </div>
                     }
                     <label>Add more details if you wish:</label>
-                    <textarea name="message" />
-                    <input type="submit" value="Send" />
+                    <textarea className='order-field' name="message" />
+                    <input class="order-button" type="submit" value="Send" />
 
                 </form>
-
+                </div>
+            </div>
+            </div>
             </div>
             </Container>
 
