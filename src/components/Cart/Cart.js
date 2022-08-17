@@ -50,13 +50,15 @@ export default function Cart () {
         let order = {
             "name": e.target.name.value,
             "email": e.target.email.value,
-            "phone": e.target.phone.value
+            "phone": e.target.phone.value,
+            "location": e.target.location.value
         };
 
         const newOrder = {
             "name": order.name,
             "email": order.email,
             "phone": order.phone,
+            "location": order.location,
             "items": userCart,
         };
 
@@ -72,7 +74,6 @@ export default function Cart () {
             swal( "Order Sent!", "It will be ready within 2 hours!", "success" );
 
             e.target.reset();
-            window.location.reload();
         }
         ).catch( err => {
             console.log( err );
@@ -111,10 +112,14 @@ export default function Cart () {
                     <label>Phone Number</label>
                     <input id="phone" type="text" name="user_number"   required />
                     <br></br>
-                    <label>Collecting Method</label>
-                    <select name='delivery' value={collectMethod} onChange={handleSelect}>
-                        <option value="none">Pick in Person</option>
-                        <option value="deliver">Deliver to my Home</option>
+                    <label>Select City</label>
+                    <select id="location" name='location' value={collectMethod} onChange={handleSelect}>
+                        <option value="amman">Amman</option>
+                        <option value="ajloun">Ajloun</option>
+                        <option value="aqaba">Aqaba</option>
+                        <option value="irbid">Irbid</option>
+                        <option value="mafraq">Mafraq</option>
+                        <option value="zarqa">Zarqa</option>
                     </select>
                     {collectMethod === 'deliver' &&
                         <div>
