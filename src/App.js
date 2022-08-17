@@ -36,7 +36,7 @@ export default class RouteIf extends Component{
 
       return (
           <Router>
-            <Header Admin={this.state.Auth} />
+            <Header Admin={this.state.Auth} onClick={this.getAdmin}/>
             <Routes>
 
               {/* Main Page routes */}

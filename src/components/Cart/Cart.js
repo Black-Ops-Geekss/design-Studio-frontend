@@ -5,7 +5,7 @@ import '../../Styling/Form.css';
 import axios from "axios";
 import { Container } from "react-bootstrap";
 
-
+import OrderImage from  './D.png';
 export default function Cart () {
 
 
@@ -104,36 +104,36 @@ export default function Cart () {
             <Container >
             <div className="form-and-map">
 
-                <form ref={form} onSubmit={sendEmail} className='order-form'>
-                    <label>Name</label>
-                    <input id="name" type="text" name="user_name" required/>
-                    <label>Email</label>
-                    <input id="email" type="text" name="user_email" />
-                    <label>Phone Number</label>
-                    <input id="phone" type="text" name="user_number"   required />
-                    <br></br>
-                    <label>Select City</label>
-                    <select id="location" name='location' value={collectMethod} onChange={handleSelect}>
-                        <option value="amman">Amman</option>
-                        <option value="ajloun">Ajloun</option>
-                        <option value="aqaba">Aqaba</option>
-                        <option value="irbid">Irbid</option>
-                        <option value="mafraq">Mafraq</option>
-                        <option value="zarqa">Zarqa</option>
-                    </select>
-                    {collectMethod === 'deliver' &&
-                        <div>
-                            <label>Insert your home address</label>
-                            <input type="text" name="user_address" />
-                        </div>
-                    }
-                    <label>Add more details if you wish:</label>
-                    <textarea name="message" />
-                    <input type="submit" value="Send" />
+<form ref={form} onSubmit={sendEmail} className='order-form'>
+    <label>Name</label>
+    <input id="name" type="text" name="user_name" required/>
+    <label>Email</label>
+    <input id="email" type="text" name="user_email" />
+    <label>Phone Number</label>
+    <input id="phone" type="text" name="user_number"   required />
+    <br></br>
+    <label>Select City</label>
+    <select id="location" name='location' value={collectMethod} onChange={handleSelect}>
+        <option value="amman">Amman</option>
+        <option value="ajloun">Ajloun</option>
+        <option value="aqaba">Aqaba</option>
+        <option value="irbid">Irbid</option>
+        <option value="mafraq">Mafraq</option>
+        <option value="zarqa">Zarqa</option>
+    </select>
+    {collectMethod === 'deliver' &&
+        <div>
+            <label>Insert your home address</label>
+            <input type="text" name="user_address" />
+        </div>
+    }
+    <label>Add more details if you wish:</label>
+    <textarea name="message" />
+    <input type="submit" value="Send" />
 
-                </form>
+</form>
 
-            </div>
+</div>
             </Container>
 
         </div>

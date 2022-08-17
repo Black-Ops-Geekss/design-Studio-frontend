@@ -101,7 +101,7 @@ export default function ClickedCard () {
           
         </Container>
             <form style={{textAlign:'center', marginBottom:'30px'}} onSubmit={handlerAddToCart}>
-                <button type="submit" className="btn btn-primary">Add to Cart</button>
+                <button type="submit" className="button-card-2">Add to Cart</button>
             </form>
         </div>
     );

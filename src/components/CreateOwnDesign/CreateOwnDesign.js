@@ -76,7 +76,7 @@ export default function CreateOwnDesign () {
           <Form.Group className="mb-3">
             <Form.Label>Image URL</Form.Label>
             <Form.Control id="inputUrl" type="url" placeholder="Enter url ..." />
-            <Button className='button' variant="primary" type="submit">
+            <Button style={{marginTop:"10px"}} className='button-card-2' variant="primary" type="submit">
               Submit
             </Button>
           </Form.Group>
@@ -131,8 +131,8 @@ export default function CreateOwnDesign () {
         {userUrl !== "" && (
           <>
         <form  style={{textAlign:'center', marginBottom:'30px'}} >
-          <button style={{marginRight:"10px"}} type="submit" onClick={removeBG} className="btn btn-primary">See on T-shirt</button>
-          <button type="submit" onClick={handlerAddToCart} className="btn btn-primary">Add to Cart</button>
+          <button style={{marginRight:"10px"}} type="submit" onClick={removeBG} className="button-card-2">See on T-shirt</button>
+          <button type="submit" onClick={handlerAddToCart} className="button-card-2">Add to Cart</button>
         </form>
           </>
         )}

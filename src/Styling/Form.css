@@ -55,7 +55,7 @@
 
 
   input[type=submit] {
-  background-color: #00ADB5;
+  background-color: #591BC5;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -68,9 +68,7 @@
   -o-transition: 0.5s;
   }
 
-  input[type=submit]:hover {
-  background-color: #393E46;
-  }
+ 
 
   .container {
   border-radius: 5px;
@@ -97,7 +95,7 @@
     -o-border-radius: 20px;
   }
   .remove-button-cart{
-    background-color: #00ADB5;
+    background-color: #591BC5;
     border: none;
     color: #EEEEEE;
     padding: 10px;
@@ -142,3 +140,5 @@
     margin: auto;
     justify-content: center;
   }
+
+

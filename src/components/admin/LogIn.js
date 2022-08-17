@@ -52,12 +52,13 @@ function Login (props){
                             {Error && <Alert key='danger' variant='danger'>
                                 Your password and user is not Correct
                             </Alert>}
-                            {Forget && <Alert key='light' variant='light'>
-                                Please contact your Admin to have a new password</Alert>}
+                        
                             <input id="submit" type="submit" name="" value="Submit" />
                         </form>
                         <br />
                         <p>  <a href='#' onClick={handlerForget}>Forget Password?</a> </p>
+                        {Forget && <Alert key='light' variant='light'>
+                                Please contact your Admin to have a new password</Alert>}
                     </div>
                 </div>
                 }

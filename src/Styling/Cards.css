@@ -1,31 +1,19 @@
 .images{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px ,1fr));
-    gap: 40px;
+    gap: 35px;
     padding-top: 19%;
     padding-bottom: 100px;
 }
 .images img{
-    width: 350px;
-    height: 350px;
-    margin: auto;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
-    cursor:pointer;
-    display:flex;
-    background:white;
-    flex-direction:column;
-    min-width:200px;
-    max-width:300px;
-    text-align:center;
-    min-height:370px;
-    border-radius:1rem;
-    margin:1.5rem;
-    transition:0.3s;
+  height: 300px;
 
+}
+.card-body-1{
+  color: #EEE;
+  text-align: center;
+  background-color: #591BC5;
+  
 }
 
 
@@ -38,4 +26,9 @@
   }
 .form{
     padding-top: 100px;
+}
+.button-card{
+  border: none;
+  color: #EEE;
+  background-color: #000000 !important;
 }

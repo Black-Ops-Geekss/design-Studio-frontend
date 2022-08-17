@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, Card, Nav } from 'react-bootstrap';
+import swal from 'sweetalert';
 
 class Cards extends Component {
   constructor(props) {
@@ -15,6 +16,10 @@ class Cards extends Component {
       mapImages: [],
       designsArray: [],
     };
+  }
+  handleNews = (e) => {
+    e.preventDefault();
+    swal ("Subscribed!", "You have been subscribed to our news letter.", "success");
   }
 
   renderingImages = async () => {
@@ -104,14 +109,14 @@ class Cards extends Component {
           {this.state.mapImages.map(img => {
             return (
 
-              <Card key={img._id} style={{ width: '21rem' }}>
+              <Card key={img._id} style={{ width: '20rem' }}>
                 <Card.Img src={img.url} alt="img" variant="top" />
-                <Card.Body>
+                <Card.Body className='card-body-1'>
                   <Card.Title>{img.category.toUpperCase()}</Card.Title>
                   <Card.Text>
                     Price: {img.price}
                   </Card.Text>
-                  <Link to={`./ClickedCard/${img._id}`}> <Button variant="primary">See on T-shirt</Button></Link>
+                  <Link to={`./ClickedCard/${img._id}`}> <Button variant="primary" className='button-card'>See on T-shirt</Button></Link>
                 </Card.Body>
               </Card>
             )
@@ -121,8 +126,8 @@ class Cards extends Component {
         <Form id="inputUrl">
           <Form.Group className="mb-3">
             <Form.Label>Subscribe to News Letter</Form.Label>
-            <Form.Control id="inputUrl" type="url" placeholder="Enter your email ..." />
-            <Button className='button' variant="primary" type="submit">
+            <Form.Control id="inputUrl" type="email" placeholder="Enter your email ..." />
+            <Button  variant="primary" type="submit" style={{backgroundColor:'#591BC5' , marginTop:'10px', border:'none'}} onClick={this.handleNews}>
             Subscribe
             </Button>
           </Form.Group>
