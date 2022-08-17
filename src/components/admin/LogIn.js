@@ -1,71 +1,85 @@
-import {  useState } from 'react';
+import { Component } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styling/Login.css';
+import '../../Styling/Login.scss';
+
 import ManageDesigns from './ManageDesigns';
-import { MdVpnKey } from "react-icons/md"; // https://react-icons.github.io/react-icons/icons?name=md
 
+export default class login extends Component {
+    constructor ( props ) {
+        super( props );
+        this.state = {
+            username: 'Admin',
+            password: 'Admin',
+            Auth: false,
+            Error: false,
+            Forget: false,
+        };
+    }
 
-
-function Login (props){
-
-    const [Auth, setAuth] = useState(false);
-    const [Error, setError] = useState(false);
-    const [Forget, setForget] = useState(false);
-
-    const handlerSubmit = (e) => {
+    handlerSubmit = ( e ) => {
         e.preventDefault();
         if ( e.target.user.value === 'Admin' && e.target.pass.value === 'Admin' ) {
-           
-            setAuth(true)
-            setError(false)
-          
-           props.onSubmit( true );
+            this.setState( {
+                Auth: true,
+                Error: false
+            } );
+            this.props.onSubmit( true );
         }
         else {
-            setError(true);
-            setForget(false);
+            this.setState( {
+                Error: true,
+                Forget: false
+            } );
         }
-    }
 
-    const handlerForget = (Forget) => {
-        setError(false);
-        setForget(true);
-    }
-
-
+    };
+    handlerForget = () => {
+        this.setState( {
+            Forget: true,
+            Error: false
+        } );
+    };
+    render () {
         return (
-            <div className='admin_main_container'>
-                {Auth ? <ManageDesigns /> : <div className='login'>
-                    <div className='form-box'>
-                        <h2>Admin Login</h2>
-                        <MdVpnKey className='admin-login-icon' />
-                        <form className='form' onSubmit={handlerSubmit}>
-                            <div className='admin-login-input'>
-                                <input type='text' required name='user' className="admin-input" />
-                                <label>Username</label>
-                            </div>
-                            <div className='admin-login-input'>
-                                <input type='password' required name='pass' className="admin-input" />
-                                <label>Password</label>
-                            </div>
-                            {Error && <Alert key='danger' variant='danger'>
-                                Your password and user is not Correct
-                            </Alert>}
-                        
-                            <input id="submit" type="submit" name="" value="Submit" />
-                        </form>
-                        <br />
-                        <p>  <a href='#' onClick={handlerForget}>Forget Password?</a> </p>
-                        {Forget && <Alert key='light' variant='light'>
-                                Please contact your Admin to have a new password</Alert>}
-                    </div>
+            <div className='background-login'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <div className='admin_main_container'>
+                    {this.state.Auth ? <ManageDesigns /> : <span className='login'>
+                    </span>
+                    }
                 </div>
-                }
+                <div className='form-box'>
+                    <h2>Login</h2>
+                    <form className='form' onSubmit={this.handlerSubmit}>
+                        <div className='admin-login-input'>
+                            <input type='text' required name='user' className="admin-input" />
+                            <label>Username</label>
+                        </div>
+                        <div className='admin-login-input'>
+                            <input type='password' required name='pass' className="admin-input" />
+                            <label>Password</label>
+                        </div>
+                        {this.state.Error && <Alert key='danger' variant='danger'>
+                            Your password and user is not Correct
+                        </Alert>}
+                        {this.state.Forget && <Alert key='light' variant='light'>
+                            Please contact your Admin to have a new password</Alert>}
+                        <input id="submit" type="submit" name="" value="Log In" />
+                    </form>
+                    <p>  <a href='#' onClick={this.handlerForget}>Forget Password?</a> </p>
+                </div>
             </div>
+
         );
-    
+    }
 }
-
-export default Login;
-
