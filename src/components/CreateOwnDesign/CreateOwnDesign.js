@@ -4,11 +4,15 @@ import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styling/createDesign.css';
+import '../../Styling/ClickedCard.css';
 import axios from 'axios';
 import tshirt from '../homePage/tshirt.png';
+import blacktshirt from '../homePage/blacktshirt.jpg';
+
 import '../../Styling/ClickedCard.css';
 import LoadingSpinner from '../homePage/Spinner';
 import swal from 'sweetalert';
+import { Container } from 'react-bootstrap';
 
 export default function CreateOwnDesign () {
 
@@ -58,6 +62,7 @@ export default function CreateOwnDesign () {
     };
 
     await axios.request( options ).then( function ( response ) {
+      console.log( response.data.image_url );
       setRemovedItem( response.data.response.image_url );
     } ).catch( function ( error ) {
       console.error( error );
@@ -106,10 +111,20 @@ export default function CreateOwnDesign () {
           )}
           {removedItem&& (
             <>
-            <div className="con-remove-t">
+          <Container style={{display:'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+           <div className="con-remove-t">
       <img src={tshirt}  className='t-shirt-img'  alt="img" />
       <img src={removedItem?removedItem:userUrl}  className='design-img-ch' alt="" />
     </div>
+
+    <div className="con-remove-t">
+      <img src={blacktshirt}  className='t-shirt-img'  alt="img" />
+      <img src={removedItem?removedItem:userUrl}  className='design-img-ch' alt="" />
+    </div>
+
+
+          
+        </Container>
             </>
           )}
         </div>
