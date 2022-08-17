@@ -13,16 +13,16 @@ export default function UpdateDesign () {
 
   async function fetchData () {
     const { data } = await axios.get( `${process.env.REACT_APP_SERVER}/getSelection/${id}` );
-    console.log( data[0] );
-    setDesign( data[0] );
+    console.log( data[ 0 ] );
+    setDesign( data[ 0 ] );
   }
 
   const update = async ( e ) => {
     e.preventDefault();
     let price = e.target.price.value;
-    price = /[0-9]/.test(price)?parseInt( price ) + ' JD':price;
+    price = /[0-9]/.test( price ) ? parseInt( price ) + ' JD' : price;
     const data = {
-      'title': e.target.title.value !== '' ? e.target.title.value : design.title,
+      'category': e.target.category.value !== '' ? e.target.category.value : design.category,
       'url': e.target.url.value !== '' ? e.target.url.value : design.url,
       'price': price !== '' ? price : design.price,
     };
@@ -40,7 +40,7 @@ export default function UpdateDesign () {
     <Form style={{ margin: "10px 30px" }} onSubmit={update}>
       <Form.Group className="mb-3" >
         <Form.Label>Design Category</Form.Label>
-        <Form.Control id="title" type="text" placeholder={`${design?.category}`} />
+        <Form.Control id="category" type="text" placeholder={`${design?.category}`} />
       </Form.Group>
 
       <Form.Group className="mb-3" >
@@ -53,7 +53,7 @@ export default function UpdateDesign () {
         <Form.Control id="price" type="number" placeholder={`${design?.price}`} />
       </Form.Group>
 
-      <Button variant="primary" type="submit" className='button-card-2' style={{margin:'auto', textAlign:'center'}}>
+      <Button variant="primary" type="submit" className='button-card-2' style={{ margin: 'auto', textAlign: 'center' }}>
         Save Changes
       </Button>
     </Form>
