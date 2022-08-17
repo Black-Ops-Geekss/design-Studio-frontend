@@ -126,7 +126,7 @@ class Cards extends Component {
         <Form id="inputUrl">
           <Form.Group className="mb-3">
             <Form.Label>Subscribe to News Letter</Form.Label>
-            <Form.Control id="inputUrl" type="url" placeholder="Enter your email ..." />
+            <Form.Control id="inputUrl" type="email" placeholder="Enter your email ..." />
             <Button  variant="primary" type="submit" style={{backgroundColor:'#591BC5' , marginTop:'10px', border:'none'}} onClick={this.handleNews}>
             Subscribe
             </Button>
