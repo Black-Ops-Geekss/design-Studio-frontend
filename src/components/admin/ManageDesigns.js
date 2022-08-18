@@ -52,13 +52,13 @@ export default class ManageDesigns extends Component {
           
           </div>
           <div className="info">
-          <Link to={`/Admin/editDesign/${card._id}`}><Button className="button-card-2"
+          <Link to={`/Admin/editDesign/${card._id}`}><Button className="button-card-3"
            >
           Edit
           </Button>
           </Link>
           <Button
-             className='button-card-2'
+             className='button-card-3'
              onClick={() => this.deleteDesign( card._id )}
           >
           Delete
