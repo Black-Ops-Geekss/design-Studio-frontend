@@ -102,7 +102,7 @@ header {
 
 /* Header content & title & button*/
 .header-content {
-  margin-top: 5%;
+  margin-top: 7%;
   text-align: center;
   color: #EFEEF5;
 }
@@ -167,7 +167,7 @@ header {
 
 .arrows {
   width: 60px;
-  height: 72px;
+  height: 90px;
   position: absolute;
   left: 50%;
   margin-left: -30px;

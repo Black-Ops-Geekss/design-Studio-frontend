@@ -7,7 +7,7 @@ import '../../Styling/Header.css';
 
 export default class Header extends Component {
   scrollTop = () => {
-    window.scrollTo( { top: 1080, behavior: 'smooth' } );
+    window.scrollTo( { top: 1260, behavior: 'smooth' } );
   };
   render () {
     return (
